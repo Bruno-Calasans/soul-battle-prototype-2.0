@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://cuk4gqq6k36vj"]
+
+[ext_resource type="Script" uid="uid://cxioet8kp4ftu" path="res://core/systems/status_effect/status_effect_modifier.gd" id="1_j0inq"]
+[ext_resource type="Script" uid="uid://c37ebfx5yxq2x" path="res://core/systems/status_effect/status_effect.gd" id="2_fuqdi"]
+[ext_resource type="Script" uid="uid://cmnk4u8oisihs" path="res://core/systems/status_effect/status_effect_trigger.gd" id="3_jqhi7"]
+
+[resource]
+script = ExtResource("2_fuqdi")
+id = "Stun"
+duration = 1
+tags = Array[int]([0])
+metadata/_custom_type_script = "uid://c37ebfx5yxq2x"

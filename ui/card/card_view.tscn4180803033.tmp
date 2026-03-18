@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c3n0dpjrny0la"]
+
+[ext_resource type="Script" uid="uid://cdf0ue3l872pj" path="res://scenes/card_view/card_view.gd" id="1_apa55"]
+
+[node name="CardView" type="Node2D" unique_id=1975973532]
+script = ExtResource("1_apa55")

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://bx27glbc41oqd"]
+
+[ext_resource type="Script" uid="uid://cxioet8kp4ftu" path="res://core/systems/status_effect/status_effect_modifier.gd" id="1_e2wdg"]
+[ext_resource type="Script" uid="uid://c37ebfx5yxq2x" path="res://core/systems/status_effect/status_effect.gd" id="2_ikwy6"]
+[ext_resource type="Script" uid="uid://cmnk4u8oisihs" path="res://core/systems/status_effect/status_effect_trigger.gd" id="3_84xsl"]
+
+[sub_resource type="Resource" id="Resource_e2wdg"]
+script = ExtResource("1_e2wdg")
+attribute = 1
+value = 1
+metadata/_custom_type_script = "uid://cxioet8kp4ftu"
+
+[resource]
+script = ExtResource("2_ikwy6")
+id = "Fury I"
+duration = 1
+modifiers = Array[ExtResource("1_e2wdg")]([SubResource("Resource_e2wdg")])
+metadata/_custom_type_script = "uid://c37ebfx5yxq2x"

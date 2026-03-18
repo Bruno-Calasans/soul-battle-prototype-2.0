@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://bst6chwugsohe"]
+
+[ext_resource type="Script" uid="uid://c37ebfx5yxq2x" path="res://core/systems/status_effect/status_effect.gd" id="1_bon52"]
+[ext_resource type="Script" uid="uid://cxioet8kp4ftu" path="res://core/systems/status_effect/status_effect_modifier.gd" id="1_ruqla"]
+[ext_resource type="Script" uid="uid://cmnk4u8oisihs" path="res://core/systems/status_effect/status_effect_trigger.gd" id="3_xw7u6"]
+[ext_resource type="Script" uid="uid://dx8na0bk4a5og" path="res://core/systems/action/action.gd" id="4_6uftm"]
+[ext_resource type="Script" uid="uid://b6vm6vgf60el5" path="res://data/actions/damage_action.gd" id="5_n1jh8"]
+
+[sub_resource type="Resource" id="Resource_6uftm"]
+script = ExtResource("5_n1jh8")
+value = 1
+metadata/_custom_type_script = "uid://b6vm6vgf60el5"
+
+[sub_resource type="Resource" id="Resource_xw7u6"]
+script = ExtResource("3_xw7u6")
+event = 3
+actions = Array[ExtResource("4_6uftm")]([SubResource("Resource_6uftm")])
+metadata/_custom_type_script = "uid://cmnk4u8oisihs"
+
+[resource]
+script = ExtResource("1_bon52")
+id = "Bleed I"
+duration = 1
+triggers = Array[ExtResource("3_xw7u6")]([SubResource("Resource_xw7u6")])
+metadata/_custom_type_script = "uid://c37ebfx5yxq2x"
