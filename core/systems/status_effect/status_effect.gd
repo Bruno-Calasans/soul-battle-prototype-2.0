@@ -5,4 +5,4 @@ class_name StatusEffect
 @export var duration: int
 @export var triggers: Array[StatusEffectTrigger] = []
 @export var modifiers: Array[StatusEffectModifier] = []
-@export var tags: Array[Enums.STATUS_EFFECT_TAG] = []
+@export var tag_rules: Array[Enums.STATUS_EFFECT_TAG_RULE] = []

@@ -20,5 +20,4 @@ func has_events() -> bool:
 func process():
 	while has_events():
 		var event = get_next()
-		event.emit()
 		GameContext.effect_system.process(event)
