@@ -44,7 +44,7 @@ func can_execute() -> bool:
 
 func execute():
 	var chosed_slot: BoardSlot = slot
-	var creature: Card = card.create({
+	var creature: CreatureCard = card.create({
 		'player': player,
 		'zone': player.board
 	})
@@ -53,6 +53,6 @@ func execute():
 		chosed_slot = player.board.get_empty_slots().pick_random()
 	
 	player.consume_energy(card.cost)
-	player.board.summon_card(creature, chosed_slot)
+	GameContext.zone_system.move_card(creature, player.board, chosed_slot)
 	SummonEvent.new(player, creature, chosed_slot).emit()
 	
