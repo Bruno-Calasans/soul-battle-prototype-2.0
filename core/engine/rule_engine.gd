@@ -6,11 +6,11 @@ func validade_command(command: GameCommand):
 		return false
 		
 	return command.validade()
-
+	
 
 func validate_action(action: Action):
 	match action.type:
 		Enums.ACTION_TYPE.ATTACK:
 			pass
 			
-		
+	

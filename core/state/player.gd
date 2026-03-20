@@ -6,4 +6,11 @@ var hand: Hand
 var board: Board
 var player_void: Zone
 var life: int = 50
-var souls: int = 0
+var energy: int = 0
+
+func has_energy(energy_to_action: int):
+	return energy >= energy_to_action
+
+
+func consume_energy(value: int):
+	energy = clamp(energy - value, Limits.MIN_ENERGY, Limits.MAX_ENERGY)

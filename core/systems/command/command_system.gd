@@ -1,3 +1,6 @@
+# executa na ordem que foi adicionado
+# gerencia todos os comandos
+# envia para o game controller
 extends Resource
 class_name CommandSystem
 
@@ -10,13 +13,20 @@ func add_to_queue(command: GameCommand):
 func get_next():
 	return queue.pop_front()
 
+
 func has_commands() -> bool:
 	return queue.size() > 0
 	
 	
 func process():
-	print("Command system is running")
 	while has_commands():
 		var command = get_next()
-		GameContext.game_controller.execute(command)
 		
+		# verifica se comando foi rejeitado
+		if not command.is_invalid: return
+		
+		# verifica se comando é válido antes de executar
+		if not command.can_execute(): return
+			
+		# adiciona à fila de ações
+		GameContext.action_system.add_to_queue(command.to_action())

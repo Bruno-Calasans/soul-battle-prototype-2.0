@@ -1,6 +1,9 @@
 extends ActiveAction
 class_name ActiveDamageAction
 
+var source: Card
+var target: Card
+
 func _init(_action: DamageAction, _source: Card, _target: Card) -> void:
 	action = _action
 	source = _source

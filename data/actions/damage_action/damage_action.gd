@@ -11,6 +11,8 @@ func _init(_value: int, _dmg_type: Enums.DMG_TYPE)  -> void:
 	dmg_type = _dmg_type
 
 
-func create(source: Card, target: Card):
-	var dmg_action = ActiveDamageAction.new(self, source, target)
+func create(config: Dictionary[String, Variant]) -> ActiveAction:
+	if not config.has('target'): return
+	if not config.has('source'): return
+	var dmg_action = ActiveDamageAction.new(self, config.source, config.target)
 	return dmg_action
