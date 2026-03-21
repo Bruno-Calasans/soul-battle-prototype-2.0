@@ -1,14 +1,14 @@
 extends Resource
 class_name EffectSystem
 
-var queue: Array[ActiveEffect] = []
+var queue: Array[Effect] = []
 
 
 func add_to_queue(action: Action):
 	queue.append(action)
 	
 	
-func get_next() -> ActiveEffect:
+func get_next() -> Effect:
 	return queue.pop_front()
 
 
@@ -18,13 +18,13 @@ func has_actions() -> bool:
 
 func handle_card_effects(event: GameEvent):
 	# verifica efeitos das cartas no campo
-	var cards = GameContext.state.cards
+	var cards = GameContext.state.get_all_cards()
 	for card in cards:
 		if len(card.effects) > 0:
-			for effect in card.effects:
-				if effect.type == event.type: 
-					var active_effect = ActiveEffect.new(effect, event.source, event.target)
-					add_to_queue(active_effect)
+			for effect_data in card.data.effects:
+				if effect_data.type == event.type: 
+					var effect = Effect.new(effect_data, event.source, event.target)
+					add_to_queue(effect)
 
 
 func handle_status_effects(event: GameEvent):
@@ -48,7 +48,7 @@ func handle_event(event: GameEvent):
 	handle_status_effects(event)
 
 
-func get_targets(effect: ActiveEffect) -> Array[Card]:
+func get_targets(effect: Effect) -> Array[Card]:
 	
 	match effect.target_type:
 		
@@ -98,7 +98,7 @@ func check_conditions(conditions: Array[EffectCondition], target: Card) -> bool:
 	return false
 
 
-func resolve(active_effect: ActiveEffect):
+func resolve(active_effect: Effect):
 	
 	# pega os alvos do efeito
 	var targets = get_targets(active_effect)

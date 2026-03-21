@@ -24,7 +24,13 @@ func has_actions() -> bool:
 func process():
 	while has_actions():
 		var action = get_next()
-		if action.is_cancelled: return
-		if not action.can_execute(): return
+		
+		if action.is_cancelled:
+			print(action.reason) 
+			return
+		
+		if not action.can_execute():
+			print(action.reason) 
+			return
 		action.execute()
 	

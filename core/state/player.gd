@@ -8,6 +8,7 @@ var player_void: Zone
 var life: int = 50
 var energy: int = 0
 
+
 func has_energy(energy_to_action: int):
 	return energy >= energy_to_action
 

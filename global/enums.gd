@@ -40,7 +40,7 @@ enum DMG_TYPE {
 	WIND,
 	FIRE,
 	WATER,
-	FROST,
+	ICE,
 	LIGHT,
 	DARK,
 	AIR,

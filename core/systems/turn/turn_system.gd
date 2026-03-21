@@ -5,15 +5,17 @@ func change_turn():
 	GameContext.state.turn_number += 1
 	GameContext.state.turn_player = get_next_player()
 
+
 func start_turn():
 	change_turn()
 	GameContext.event_system.add_to_queue(TurnStartEvent.new())
+	
 	
 func end_turn():
 	change_turn()
 	GameContext.event_system.add_to_queue(TurnEndEvent.new())
 	
-
+	
 # determinar qual o próximo jogador para o próximo turno
 func get_next_player():
 	var players = GameContext.state.players

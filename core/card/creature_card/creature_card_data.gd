@@ -2,17 +2,17 @@ extends CardData
 class_name CreatureCardData
 
 # info
-var race: Enums.CREATURE_RACE
-var class_type: Enums.CREATURE_CLASS
-var dmg_type: Enums.DMG_TYPE
-var souls: int
+@export var race: Enums.CREATURE_RACE
+@export var class_type: Enums.CREATURE_CLASS
+@export var dmg_type: Enums.DMG_TYPE
+@export var souls: int
 
 # base status
-var base_atk: int
-var base_health: int
-var base_def: int
-var base_evade: int
-var resistence: CreatureResistence
+@export var base_atk: int
+@export var base_health: int
+@export var base_def: int
+@export var base_evade: int
+@export var resistence: CreatureResistence
 
 
 func create(config: Dictionary):

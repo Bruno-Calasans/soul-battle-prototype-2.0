@@ -21,12 +21,17 @@ func has_commands() -> bool:
 func process():
 	while has_commands():
 		var command = get_next()
+		print("Executando comando" + command.to_string())
 		
 		# verifica se comando foi rejeitado
-		if not command.is_invalid: return
+		if command.is_invalid: 
+			print("Comando inválido: " + command.reason)
+			return
 		
 		# verifica se comando é válido antes de executar
-		if not command.can_execute(): return
+		if not command.can_execute():
+			print("Comando não pode ser executado: " + command.reason) 
+			return
 			
 		# adiciona à fila de ações
 		GameContext.action_system.add_to_queue(command.to_action())

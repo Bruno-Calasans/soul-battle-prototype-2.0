@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="CreatureCardData" format=3 uid="uid://bmjg58bo1x4b3"]
+
+[ext_resource type="Script" uid="uid://bikbi0fs61j4i" path="res://core/systems/effect/effect_data.gd" id="1_grwci"]
+[ext_resource type="Script" uid="uid://dbth0g6218oui" path="res://core/card/creature_card/creature_resistence.gd" id="2_t2gdd"]
+[ext_resource type="Script" uid="uid://bkppirogvikci" path="res://core/card/creature_card/creature_card_data.gd" id="3_iyv7b"]
+
+[sub_resource type="Resource" id="Resource_k4iac"]
+script = ExtResource("2_t2gdd")
+resistences = {
+"DARKNESS": 0,
+"EARTH": 0,
+"ELETRICITY": 0,
+"FIRE": 0,
+"ICE": 0,
+"LIGHT": 0,
+"PHYSICAL": 1,
+"WATER": 0,
+"WIND": 0
+}
+metadata/_custom_type_script = "uid://dbth0g6218oui"
+
+[resource]
+script = ExtResource("3_iyv7b")
+race = 1
+class_type = 1
+dmg_type = 1
+souls = 1
+base_atk = 2
+base_health = 2
+base_def = 3
+resistence = SubResource("Resource_k4iac")
+id = "Guerreiro"
+desc = "Nenhuma"
+cost = 2
+metadata/_custom_type_script = "uid://bkppirogvikci"

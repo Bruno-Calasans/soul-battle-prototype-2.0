@@ -1,7 +1,7 @@
 extends ActionData
 class_name SummonActionData
 
-var card: CreatureCardData
+@export var card: CreatureCardData
 
 func _init(_card: CreatureCardData) -> void:
 	type = Enums.ACTION_TYPE.SUMMON

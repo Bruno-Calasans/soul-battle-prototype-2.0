@@ -1,10 +1,12 @@
-# define quando algo acontece e o que fazer
-# dados do efeito
+# efeito em execução
 extends Resource
 class_name Effect
 
-var type: Enums.EFFECT_TYPE
-var trigger: Enums.TRIGGER_TYPE
-var target_type: Enums.TARGET_TYPE
-var actions: Array[Action] = []
-var conditions: Array[EffectCondition] = []
+var data: EffectData
+var source: Card
+var target: Card
+
+func _init(effect_data: EffectData, _source: Card, _target: Card) -> void:
+	data = effect_data
+	source = _source
+	target = _target
