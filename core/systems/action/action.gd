@@ -1,7 +1,6 @@
 extends Resource
 class_name Action
 
-var data: ActionData
 var is_cancelled : bool
 var reason: String
 

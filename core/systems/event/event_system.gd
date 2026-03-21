@@ -18,6 +18,7 @@ func has_events() -> bool:
 	
 	
 func process():
+	print("Processando eventos...")
 	while has_events():
 		var event = get_next()
 		GameContext.effect_system.process(event)

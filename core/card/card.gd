@@ -2,7 +2,42 @@
 extends Resource
 class_name Card
 
-@export var data: CardData
-@export var owner: Player
-@export var zone: Zone
-@export var slot: BoardSlot
+var data: CardData
+var owner: Player
+var zone: Zone
+var slot: BoardSlot
+var destroyed: bool = false
+
+func get_cost():
+	return data.cost
+
+func set_id(_id: String):
+	data.id = _id
+	
+	
+func set_desc(_desc: String):
+	data.desc = _desc
+	
+	
+func set_type(_card_type: Enums.CARD_TYPE):
+	data.type = _card_type
+	
+
+func set_rarity(_rarity: Enums.CARD_RARITY):
+	data.rarity = _rarity
+	
+	
+func set_cost(_cost: int):
+	data.cost = max(_cost, 0)
+
+
+func has_effect():
+	return data.effects.size() > 0
+
+
+func destroy():
+	destroyed = true
+
+
+func is_destroyed() -> bool:
+	return false

@@ -6,7 +6,15 @@ var hand: Hand
 var board: Board
 var player_void: Zone
 var life: int = 50
-var energy: int = 0
+var energy: int = 10
+
+
+func _init() -> void:
+	deck = Deck.new()
+	board = Board.new(self, 3)
+	hand = Hand.new()
+	player_void = Void.new()
+	
 
 
 func has_energy(energy_to_action: int):

@@ -12,17 +12,21 @@ func get_next() -> Effect:
 	return queue.pop_front()
 
 
-func has_actions() -> bool:
+func has_effects() -> bool:
 	return queue.size() > 0
 
 
 func handle_card_effects(event: GameEvent):
 	# verifica efeitos das cartas no campo
-	var cards = GameContext.state.get_all_cards()
+	var cards: Array[Card] = GameContext.state.get_all_cards()
+	
 	for card in cards:
-		if len(card.effects) > 0:
+		# verifica se tem efeito para ativar
+		if card.has_effect():
+	
 			for effect_data in card.data.effects:
-				if effect_data.type == event.type: 
+				if effect_data.trigger == event.type: 
+					# transforma effect_data em effect
 					var effect = Effect.new(effect_data, event.source, event.target)
 					add_to_queue(effect)
 
@@ -105,7 +109,8 @@ func resolve(active_effect: Effect):
 	
 	# verifica se pode ativar efeito
 	for target in targets:
-		if not check_conditions(active_effect.conditions, target): continue
+		if not check_conditions(active_effect.conditions, target): 
+			continue
 		
 		# adiciona à fila de ações
 		for action in active_effect.effect.actions:
@@ -114,7 +119,12 @@ func resolve(active_effect: Effect):
 
 
 func process(event: GameEvent):
+	print("Processsando efeitos...")
 	handle_event(event)
+	
+	if not has_effects():
+		print("Nenhum efeito para processar")
+		
 	for effect in queue:
 		resolve(effect)
 		

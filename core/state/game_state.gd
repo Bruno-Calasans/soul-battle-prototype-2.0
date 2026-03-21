@@ -17,8 +17,8 @@ func get_allies(player: Player) -> Array[Card]:
 
 func get_all_cards() -> Array[Card]:
 	var cards: Array[Card] = []
-	for player in players:
-		cards.assign(player.board.cards)
+	for player in players: 
+		cards.append_array(player.board.cards)
 	return cards
 
 

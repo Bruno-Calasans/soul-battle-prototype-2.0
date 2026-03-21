@@ -3,11 +3,11 @@ extends GameCommand
 class_name SummonCardCommand
 
 var player: Player
-var card: CreatureCardData
+var card: CreatureCard
 var slot: BoardSlot
 
-func _init(player: Player, _card: CreatureCardData, _slot: BoardSlot = null) -> void:
-	player = player
+func _init(_player: Player, _card: CreatureCard, _slot: BoardSlot = null) -> void:
+	player = _player
 	card = _card
 	slot = _slot
 	
@@ -21,9 +21,13 @@ func can_execute() -> bool:
 	if card == null: 
 		reject("Criatura não encontrada")
 		return false
+		
+	if card.is_destroyed():
+		reject("Criatura está destruída")
+		return false
 	
 	# jogador não tem energia
-	if not player.has_energy(card.cost): 
+	if not player.has_energy(card.data.cost): 
 		reject("Jogador não tem energia o suficiente")
 		return false
 	
@@ -49,7 +53,6 @@ func can_execute() -> bool:
 
 	
 func to_action():
-	var summon_action_data = SummonActionData.new(card)
-	return SummonAction.new(summon_action_data, player, card, slot)
+	return SummonAction.new(player, card, slot)
 	
 	

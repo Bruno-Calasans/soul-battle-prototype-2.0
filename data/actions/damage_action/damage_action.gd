@@ -1,18 +1,33 @@
 extends Action
 class_name DamageAction
 
-@export var value: int
-@export var dmg_type: Enums.DMG_TYPE
+var dmg_data: DamageActionData
+var source: Card
+var target: Card
+
+func _init(_dmg_data: DamageActionData, _source: Card, _target: Card) -> void:
+	dmg_data = _dmg_data
+	source = _source
+	target = _target
 
 
-func _init(_value: int, _dmg_type: Enums.DMG_TYPE)  -> void:
-	type = Enums.ACTION_TYPE.DAMAGE
-	value = _value
-	dmg_type = _dmg_type
+func can_execute() -> bool:
+	if target == null:
+		cancel("Target não encontrado")
+		return false
+		
+	if source == null:
+		cancel("Source não encontrado")
+		
+	return true
 
 
-func create(config: Dictionary[String, Variant]) -> ActiveAction:
-	if not config.has('target'): return
-	if not config.has('source'): return
-	var dmg_action = ActiveDamageAction.new(self, config.source, config.target)
-	return dmg_action
+func execute():
+	var damage = GameContext.damage_system.calculate_dmg(
+		source, 
+		target, 
+		dmg_data.value, 
+		dmg_data.dmg_type
+	)
+	target.take_damage(damage)
+	DamageEvent.new(source, target).emit()

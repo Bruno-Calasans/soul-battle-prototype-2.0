@@ -10,3 +10,7 @@ func _init(effect_data: EffectData, _source: Card, _target: Card) -> void:
 	data = effect_data
 	source = _source
 	target = _target
+	
+	
+func handle(event: GameEvent):
+	pass

@@ -15,3 +15,4 @@ func _init(
 	player = _player
 	card = _card
 	slot = _slot
+	print("Jogador invocou criatura %s!" % card.data.id)

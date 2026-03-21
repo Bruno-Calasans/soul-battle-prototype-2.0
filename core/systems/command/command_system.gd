@@ -10,7 +10,7 @@ func add_to_queue(command: GameCommand):
 	queue.append(command)
 	
 	
-func get_next():
+func get_next() -> GameCommand:
 	return queue.pop_front()
 
 
@@ -21,17 +21,13 @@ func has_commands() -> bool:
 func process():
 	while has_commands():
 		var command = get_next()
-		print("Executando comando" + command.to_string())
 		
 		# verifica se comando foi rejeitado
-		if command.is_invalid: 
-			print("Comando inválido: " + command.reason)
-			return
+		if command.is_invalid: return
 		
 		# verifica se comando é válido antes de executar
-		if not command.can_execute():
-			print("Comando não pode ser executado: " + command.reason) 
-			return
+		if not command.can_execute(): return
 			
 		# adiciona à fila de ações
+		print("Executando comando: " + command.get_script().get_global_name())
 		GameContext.action_system.add_to_queue(command.to_action())

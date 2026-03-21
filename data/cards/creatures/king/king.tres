@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="CreatureCardData" format=3 uid="uid://bobpkys02uj1e"]
+
+[ext_resource type="Script" uid="uid://bikbi0fs61j4i" path="res://core/systems/effect/effect_data.gd" id="1_hkmrc"]
+[ext_resource type="Script" uid="uid://coxxspsl728u1" path="res://core/systems/action/action_data.gd" id="2_r0tkb"]
+[ext_resource type="Script" uid="uid://cwjw2p4woiiv3" path="res://data/actions/attribute_modifier/attribute_modifier_data.gd" id="3_ysq2u"]
+[ext_resource type="Script" uid="uid://dvxrdl33ay4n0" path="res://core/systems/effect/effect_condition.gd" id="4_jc2uk"]
+[ext_resource type="Script" uid="uid://dbth0g6218oui" path="res://core/card/creature_card/creature_resistence.gd" id="5_m83dd"]
+[ext_resource type="Script" uid="uid://bkppirogvikci" path="res://core/card/creature_card/creature_card_data.gd" id="6_mxxck"]
+
+[sub_resource type="Resource" id="Resource_x2ip8"]
+script = ExtResource("3_ysq2u")
+attribute = 1
+value = 1
+type = 5
+metadata/_custom_type_script = "uid://cwjw2p4woiiv3"
+
+[sub_resource type="Resource" id="Resource_vxu8u"]
+script = ExtResource("1_hkmrc")
+trigger_event = 6
+target_type = 2
+actions = Array[ExtResource("2_r0tkb")]([SubResource("Resource_x2ip8")])
+metadata/_custom_type_script = "uid://bikbi0fs61j4i"
+
+[sub_resource type="Resource" id="Resource_r1kjm"]
+script = ExtResource("5_m83dd")
+metadata/_custom_type_script = "uid://dbth0g6218oui"
+
+[resource]
+script = ExtResource("6_mxxck")
+race = 1
+class_type = 1
+dmg_type = 1
+souls = 1
+base_atk = 1
+base_health = 1
+base_def = 2
+resistence = SubResource("Resource_r1kjm")
+id = "King"
+desc = "Um rei sábio e poderoso"
+cost = 2
+effects = Array[ExtResource("1_hkmrc")]([SubResource("Resource_vxu8u")])
+metadata/_custom_type_script = "uid://bkppirogvikci"
