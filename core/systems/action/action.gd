@@ -1,8 +1,8 @@
 extends Resource
 class_name Action
 
-var is_cancelled : bool
-var reason: String
+var is_cancelled : bool = false
+var reason: String = ""
 
 # verifica regras do jogo
 func can_execute() -> bool:

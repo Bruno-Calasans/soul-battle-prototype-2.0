@@ -26,9 +26,9 @@ func process():
 	while has_actions():
 		var action = get_next()
 		
-		if action.is_cancelled: return
+		if action.is_cancelled: continue
 		
-		if not action.can_execute(): return
+		if not action.can_execute(): continue
 			
 		print("Executando ação: " + action.get_script().get_global_name())
 		action.execute()

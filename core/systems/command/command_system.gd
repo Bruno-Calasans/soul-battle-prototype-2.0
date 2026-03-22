@@ -23,10 +23,10 @@ func process():
 		var command = get_next()
 		
 		# verifica se comando foi rejeitado
-		if command.is_invalid: return
+		if command.is_invalid: continue
 		
 		# verifica se comando é válido antes de executar
-		if not command.can_execute(): return
+		if not command.can_execute(): continue
 			
 		# adiciona à fila de ações
 		print("Executando comando: " + command.get_script().get_global_name())

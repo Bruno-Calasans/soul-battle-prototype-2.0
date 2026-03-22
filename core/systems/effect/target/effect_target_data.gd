@@ -1,6 +1,7 @@
 extends Resource
 class_name EffectTargetData
 
-@export var target_type: Enums.TARGET_TYPE
-@export var team_type: Enums.TEAM_TYPE
+@export var group: Enums.GROUP
+@export var side: Enums.SIDE
 @export var include_self: bool
+@export var filters: Array[EffectFilter] = []

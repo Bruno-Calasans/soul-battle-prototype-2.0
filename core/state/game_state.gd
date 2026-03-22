@@ -23,7 +23,6 @@ func get_all_cards() -> Array[Card]:
 
 
 func summon_creature(source: Variant, card: CreatureCard, slot: BoardSlot = null):
-	
 	if source is Player:
 		
 		if slot != null:
@@ -36,3 +35,5 @@ func summon_creature(source: Variant, card: CreatureCard, slot: BoardSlot = null
 		print("Creature summons creature")
 		
 		
+func add_player(player: Player):
+	players.append(player)

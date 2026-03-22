@@ -1,11 +1,11 @@
 extends Action
-class_name AttributeModifierAction
+class_name StatsModifierAction
 
 var target: CreatureCard
-var modifier_data: AttributeModifierActionData
+var data: StatsModifierActionData
 
-func _init(_modifier_data: AttributeModifierActionData,  _target: CreatureCard,) -> void:
-	modifier_data = _modifier_data
+func _init(_modifier_data: StatsModifierActionData,  _target: CreatureCard,) -> void:
+	data = _modifier_data
 	target = _target
 	
 
@@ -13,14 +13,16 @@ func can_execute() -> bool:
 	if target == null:
 		cancel("Target não encontrado")
 		return false
+		
 	return true
 	
-func execute():
-	var value = modifier_data.value
 	
-	match modifier_data.modifier_type:
+func execute():
+	var value = data.value
+	
+	match data.modifier_type:
 		Enums.MODIFIER_TYPE.INCREASE:
-			match modifier_data.attribute:
+			match data.attribute:
 				Enums.ATTRIBUTE.HP:
 					var health = target.current_health + value
 					target.set_current_health(health)
@@ -38,7 +40,7 @@ func execute():
 					target.set_current_evade(evade)
 					
 		Enums.MODIFIER_TYPE.DECREASE:
-			match modifier_data.attribute:
+			match data.attribute:
 				Enums.ATTRIBUTE.HP:
 					var health = target.current_health - value
 					target.set_current_health(health)
@@ -56,7 +58,7 @@ func execute():
 					target.set_current_evade(evade)
 					
 		Enums.MODIFIER_TYPE.SET:
-			match modifier_data.attribute:
+			match data.attribute:
 				Enums.ATTRIBUTE.HP:
 					target.set_current_health(value)
 					

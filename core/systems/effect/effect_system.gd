@@ -4,8 +4,8 @@ class_name EffectSystem
 var queue: Array[Effect] = []
 
 
-func add_to_queue(action: Action):
-	queue.append(action)
+func add_to_queue(effect: Effect):
+	queue.append(effect)
 	
 	
 func get_next() -> Effect:
@@ -22,13 +22,13 @@ func handle_card_effects(event: GameEvent):
 	
 	for card in cards:
 		# verifica se tem efeito para ativar
-		if card.has_effect():
+		if not card.has_effect(): continue
 	
-			for effect_data in card.data.effects:
-				if effect_data.trigger == event.type: 
-					# transforma effect_data em effect
-					var effect = Effect.new(effect_data, event.source, event.target)
-					add_to_queue(effect)
+		for effect_data in card.data.effects:
+			var effect = Effect.new(effect_data, event.source, event.target)
+			if not TriggerResolver.can_trigger(effect, event): continue 
+			# transforma effect_data em effect
+			add_to_queue(effect)
 
 
 func handle_status_effects(event: GameEvent):
@@ -48,83 +48,33 @@ func handle_status_effects(event: GameEvent):
 		
 
 func handle_event(event: GameEvent):
-	handle_card_effects(event)
-	handle_status_effects(event)
+	var effects = TriggerResolver.get_effects(event)
+	queue.append_array(effects)
+	#handle_status_effects(event)
 
 
-func get_targets(effect: Effect) -> Array[Card]:
-	
-	match effect.target_type:
-		
-		Enums.TARGET_TYPE.SELF:
-			return [effect.source]
-			
-		Enums.TARGET_TYPE.ENEMY:
-			return [effect.target]
-			
-		Enums.TARGET_TYPE.ALLY:
-			return [effect.target]
-			
-		Enums.TARGET_TYPE.ALL_ALLIES:
-			return GameContext.state.get_all_allies(effect.source.player)
-			
-		Enums.TARGET_TYPE.ALL_ENEMIES:
-			return GameContext.state.get_all_enemies(effect.source.player)
-
-	return []	
-
-
-func check_conditions(conditions: Array[EffectCondition], target: Card) -> bool:
-	if conditions.is_empty(): return true
-	
-	for condition in conditions:
-		
-		# criatura
-		if target is CreatureCard:
-			
-			match condition.attribute:
-				# health below value
-				Enums.ATTRIBUTE.HP:
-					
-					if Enums.EFFECT_CONDITION_COMPARATOR.BELOW_TO:
-						return target.current_health < condition.value
-						
-					if Enums.EFFECT_CONDITION_COMPARATOR.ABOVE_TO:
-						return target.current_health < condition.value
-				
-				# health above value
-				Enums.EFFECT_CONDITION_TYPE.HP_ABOVE_TO:
-					return target.status.current_health > condition.value
-						
-				Enums.EFFECT_CONDITION_TYPE.HP_EQUALS_TO:
-					return target.status.current_health == condition.value
-		
-	return false
-
-
-func resolve(active_effect: Effect):
-	
+func resolve(effect: Effect):
 	# pega os alvos do efeito
-	var targets = get_targets(active_effect)
+	var targets = TargetResolver.get_targets(effect)
+	print("Alvos encontrados")
 	
 	# verifica se pode ativar efeito
 	for target in targets:
-		if not check_conditions(active_effect.conditions, target): 
-			continue
-		
 		# adiciona à fila de ações
-		for action in active_effect.effect.actions:
-			var active_action = action.create(active_effect.source, target)
-			GameContext.action_system.add_to_queue(active_action)
+		print("Ações = ", effect.data.actions)
+		for action_data in effect.data.actions:
+			var action = action_data.to_action({
+				"target": target
+			})
+			GameContext.action_system.add_to_queue(action)
 
 
 func process(event: GameEvent):
-	print("Processsando efeitos...")
+	print("Verificando efeitos...")
 	handle_event(event)
 	
-	if not has_effects():
-		print("Nenhum efeito para processar")
-		
-	for effect in queue:
-		resolve(effect)
+	while has_effects():
+			print("Resolvendo efeito...")
+			var effect = get_next()
+			resolve(effect)
 		

@@ -7,4 +7,3 @@ class_name EffectData
 @export var trigger: EffectTriggerData
 @export var target: EffectTargetData
 @export var actions: Array[ActionData] = []
-@export var conditions: Array[EffectCondition] = []

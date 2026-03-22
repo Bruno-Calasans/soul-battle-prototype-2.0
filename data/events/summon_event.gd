@@ -2,8 +2,6 @@
 extends GameEvent
 class_name SummonEvent
 
-var player: Player
-var card: CreatureCard
 var slot: BoardSlot
 
 func _init(
@@ -11,8 +9,9 @@ func _init(
 	_card: CreatureCard, 
 	_slot: BoardSlot, 
 	) -> void:
-	type = Enums.GAME_EVENT_TYPE.SUMMON	
+	type = Enums.GAME_EVENT.SUMMON	
 	player = _player
-	card = _card
+	target = _card
+	source = _player
 	slot = _slot
-	print("Jogador invocou criatura %s!" % card.data.id)
+	print("Jogador invocou criatura %s!" % _card.data.id)
