@@ -72,38 +72,25 @@ static func check_value(operation: Enums.OPERATION, search_value: Variant, curre
 	return false
 
 
-static func match_team(subject: Variant, source: Variant, side: Enums.SIDE):
+static func match_team(subject: Card, source: Variant, side: Enums.SIDE):
 	if source == null or subject == null:
 		return false
+		
+	var subject_owner = subject.owner
+	var source_owner = source if source is Player else source.owner
 	
-	if subject is Card and source is Player:
-		match side:
-			Enums.SIDE.SELF:
-				return subject.owner == source
+	match side:
+		Enums.SIDE.SELF:
+			return subject.get_instance_id() == source.get_instance_id()
+		
+		Enums.SIDE.ALLY:
+			return subject_owner.get_instance_id() == source_owner.get_instance_id()
 			
-			Enums.SIDE.ALLY:
-				return subject.owner == source
-				
-			Enums.SIDE.ENEMY:
-				return subject.owner != source
-				
-			Enums.SIDE.ANY:
-				return true
-				
-		return false
-				
-	if subject is Card and source is Card:
-		match side:
-			Enums.SIDE.SELF:
-				return subject == source
+		Enums.SIDE.ENEMY:
+			return subject_owner != source_owner
 			
-			Enums.SIDE.ALLY:
-				return subject.owner == source.owner
-				
-			Enums.SIDE.ENEMY:
-				return subject.owner != source.owner
-				
-			Enums.SIDE.ANY:
-				return true
-				
-		return false
+		Enums.SIDE.ANY:
+			return true
+			
+	return false
+			

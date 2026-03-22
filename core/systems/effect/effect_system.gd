@@ -56,7 +56,6 @@ func handle_event(event: GameEvent):
 func resolve(effect: Effect):
 	# pega os alvos do efeito
 	var targets = TargetResolver.get_targets(effect)
-	print("Alvos encontrados")
 	
 	# verifica se pode ativar efeito
 	for target in targets:

@@ -3,24 +3,21 @@ extends Resource
 class_name TargetResolver
 
 static func get_targets(effect: Effect) -> Array[Card]:
-	var targets: Array[Card] = GameContext.state.get_all_cards()
+	var found_targets: Array[Card] = []
+	var cards: Array[Card] = GameContext.state.get_all_cards()
 	var effect_target = effect.data.target
-
-	for target in targets:
-		
-		if not FilterResolver.match_team(target, effect.source, effect_target.side): 
-			print("Team match finalizado")
+	
+	for card in cards:
+		if not FilterResolver.match_team(card, effect.source, effect_target.side): 
 			continue
 			
-		if not FilterResolver.match_filters(target, effect_target.filters): 
-			print("filter match finalizado")
+		if not FilterResolver.match_filters(card, effect_target.filters): 
 			continue
 		
-		targets.append(target)
+		found_targets.append(card)
 		
 	# exclui a si mesmo
 	if not effect.data.target.include_self:
-		targets.erase(effect.source)
+		found_targets.erase(effect.source)
 		
-	
-	return targets
+	return found_targets
