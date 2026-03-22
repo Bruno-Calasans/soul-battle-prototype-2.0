@@ -4,7 +4,6 @@ class_name FilterResolver
 
 # verifica se a entidade se encaixa nos filtros criados
 static func match_filters(subject: Variant, filters: Array[EffectFilter]):
-	
 	if filters == null or filters.is_empty():
 		return true
 	
@@ -25,12 +24,24 @@ static func get_field_value(subject: Variant, field: Enums.FILTER_FIELD) -> Vari
 			
 			Enums.FILTER_FIELD.HEALTH:
 				return subject.current_health
+				
+			Enums.FILTER_FIELD.DEF:
+				return subject.current_def
+				
+			Enums.FILTER_FIELD.EVADE:
+				return subject.current_evade
+			
+			Enums.FILTER_FIELD.CLASS:
+				return subject.data.class_type
 			
 			Enums.FILTER_FIELD.RACE:
 				return subject.data.race
 			
 			Enums.FILTER_FIELD.OWNER:
 				return subject.owner
+				
+			Enums.FILTER_FIELD.SOUL:
+				return subject.data.soul
 				
 	if subject is GameEvent:
 		match field:
@@ -46,22 +57,22 @@ static func check_value(operation: Enums.OPERATION, search_value: Variant, curre
 	match operation:
 		
 		Enums.OPERATION.EQUALS_TO: 
-			return search_value == current_value
+			return current_value == search_value
 			
 		Enums.OPERATION.NOT_EQUALS_TO: 
-			return search_value != current_value
+			return current_value != search_value
 		
 		Enums.OPERATION.ABOVE_TO: 
-			return search_value > current_value
+			return current_value > search_value
 			
 		Enums.OPERATION.BELOW_TO: 
-			return search_value < current_value
+			return current_value < search_value
 			
-		Enums.OPERATION.ABOVE_OR_EQUALS_TO: 
-			return search_value >= current_value
+		Enums.OPERATION.ABOVE_OR_EQUALS_TO:
+			return current_value >= search_value
 			
 		Enums.OPERATION.BELOW_OR_EQUALS_TO: 
-			return search_value <= current_value
+			return current_value <= search_value
 		
 		Enums.OPERATION.CONTAINS:
 			return search_value in current_value

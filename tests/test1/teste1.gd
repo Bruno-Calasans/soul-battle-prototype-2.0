@@ -1,11 +1,7 @@
-extends Node2D
-class_name Test
+extends Node
+class_name Test1
 
-var engine: GameEngine
-
-func _ready() -> void:
-	engine = GameEngine.new()
-	
+static func run():
 	# teste player
 	var player = Player.new()
 	GameContext.state.add_player(player)
@@ -25,10 +21,21 @@ func _ready() -> void:
 	
 	var summon_warrior_cmd = SummonCardCommand.new(player, warrior)
 	var summon_king_cmd = SummonCardCommand.new(player, king)
-	#
-	#GameContext.command_system.add_to_queue(summon_warrior_cmd)
+	
+	print("warrior atk before = ", warrior.current_atk)
+	print("king atk before = ", king.current_atk)
+	
+	#teste effect
+	GameContext.command_system.add_to_queue(summon_warrior_cmd)
 	GameContext.command_system.add_to_queue(summon_king_cmd)
 	
 	GameContext.command_system.process()
 	GameContext.action_system.process()
 	GameContext.event_system.process()
+	
+	GameContext.command_system.process()
+	GameContext.action_system.process()
+	GameContext.event_system.process()
+	
+	print("king atk after = ", king.current_atk)
+	print("warrior atk after = ", warrior.current_atk)

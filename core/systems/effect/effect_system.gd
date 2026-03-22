@@ -60,7 +60,6 @@ func resolve(effect: Effect):
 	# verifica se pode ativar efeito
 	for target in targets:
 		# adiciona à fila de ações
-		print("Ações = ", effect.data.actions)
 		for action_data in effect.data.actions:
 			var action = action_data.to_action({
 				"target": target
