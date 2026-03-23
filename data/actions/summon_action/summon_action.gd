@@ -1,65 +1,75 @@
 extends Action
 class_name SummonAction
 
-var player: Player
-var card: CreatureCard
-var slot: BoardSlot
-
 func _init(
-	_player: Player, 
-	_card: CreatureCard, 
-	_slot: BoardSlot = null, 
+	summon_data: SummonActionData,
+	_source: Variant,
+	_target: BoardSlot = null
 	) -> void:
-	player = _player
-	card = _card
-	slot = _slot
-
+	type = Enums.ACTION_TYPE.SUMMON
+	source = _source
+	target = _target
+	data = summon_data
+	
 
 func can_execute() -> bool:
-	# dados inválidos
-	if player == null: 
-		cancel("Jogador não encontrado")
-		return false
-		
-	if card == null: 
-		cancel("Criatura não encontrada")
-		return false
-		
-	if card.is_destroyed():
-		cancel("Criatura está destruída")
-		return false
+	var player: Player = source if source is Player else source.owner
+	var card_data = (data as SummonActionData).card_data
+	var slot: BoardSlot = target
 	
-	# jogador tem energia para invocar criatura
-	if not player.has_energy(card.get_cost()):
-		cancel("SEM ENERGIA PARA INVOCAR")
+	if card_data == null: 
+		cancel("Card não encontrado")
 		return false
 		
-	# verifica slot
+	if not player.board.has_empty_slot():
+		cancel("Nenhum slot disponnível")
+		return false
+
+	# jogador invocando card
+	if source is Player:
+		
+		if source == null: 
+			cancel("Jogador não encontrado")
+			return false
+
+		# jogador tem energia para invocar criatura
+		if not source.has_energy(card_data.cost):
+			cancel("Energia insuficiente")
+			return false
+		
+	# creature invocada por outro card	
+	if source is CreatureCard:
+		
+		if source == null: 
+			cancel("Criatura não encontrada")
+			return false
+		
 	if slot:
 		# se slot está vazio
 		if not slot.card == null:
-			cancel("SLOT NÃO ESTÁ VAZIO")
+			cancel("Slot não está vazio")
 			return false
 			
 		# se slot é do jogador
-		if not slot.owner == player:
-			cancel("JOGADOR NÃO É DONO DO SLOT")
+		if not target.owner == player:
+			cancel("Jogador não possui esse slot")
 			return false
-		
-	# verifica campo por slot	
-	else:
-		if not player.board.has_empty_slot():
-			cancel("SEM SLOT VAZIO PARA INVOCAR")
-			
+						
 	return true
 
 
 func execute():
-	var chosed_slot: BoardSlot = slot
-	if not slot:
-		chosed_slot = player.board.get_empty_slots().pick_random()
-
-	player.consume_energy(card.get_cost())
-	GameContext.zone_system.move_card(card, player.board, chosed_slot)
-	SummonEvent.new(player, card, chosed_slot).emit()
+	var card_data = data.card_data
+	var slot: BoardSlot = target
+	var card: CreatureCard
 	
+	if source is Player:
+		card = card_data.to_card(source, source.hand)
+		source.consume_energy(card.get_cost())
+		GameContext.zone_system.move_card(card, source.board, slot)
+	
+	if source is Card:
+		card = card_data.to_card(source.owner, source.owner.board)
+		GameContext.zone_system.move_card(card, source.owner, slot)
+		
+	SummonEvent.new(source, card, slot).emit()

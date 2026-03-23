@@ -7,3 +7,5 @@ class_name EffectData
 @export var trigger: EffectTriggerData
 @export var target: EffectTargetData
 @export var actions: Array[ActionData] = []
+@export var duration: int = -1 # -1 é instatâneo
+	

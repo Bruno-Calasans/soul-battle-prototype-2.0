@@ -8,19 +8,13 @@ static func run():
 	
 	# card de teste 1
 	var warrior_data: CreatureCardData = preload("res://data/cards/creatures/warrior/warrior.tres")
-	var warrior = warrior_data.create({
-		"owner": player,
-		"zone": player.hand
-	})
-	
 	var king_data: CreatureCardData = preload("res://data/cards/creatures/king/king.tres")
-	var king = king_data.create({
-		"owner": player,
-		"zone": player.hand
-	})
 	
-	var summon_warrior_cmd = SummonCardCommand.new(player, warrior)
-	var summon_king_cmd = SummonCardCommand.new(player, king)
+	var warrior = warrior_data.to_card(player, player.hand)
+	var king = king_data.to_card(player, player.hand)
+	
+	var summon_warrior_cmd = SummonCardCommand.new(warrior_data, player)
+	var summon_king_cmd = SummonCardCommand.new(king_data, player)
 	
 	print("warrior atk before = ", warrior.current_atk)
 	print("king atk before = ", king.current_atk)
@@ -37,5 +31,6 @@ static func run():
 	GameContext.action_system.process()
 	GameContext.event_system.process()
 	
-	print("king atk after = ", king.current_atk)
-	print("warrior atk after = ", warrior.current_atk)
+	for card in GameContext.state.get_all_cards():
+		print("Card '%s' " % card.data.id)
+		print("atk after = ", card.current_atk)

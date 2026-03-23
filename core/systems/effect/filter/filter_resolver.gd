@@ -9,7 +9,7 @@ static func match_filters(subject: Variant, filters: Array[EffectFilter]):
 	
 	for filter in filters:
 		var current_value = get_field_value(subject, filter.field)
-		if not check_value(filter.operation, filter.value, current_value):
+		if not check_value(filter.comparator, filter.value, current_value):
 			return false
 			
 	return true
@@ -53,31 +53,31 @@ static func get_field_value(subject: Variant, field: Enums.FILTER_FIELD) -> Vari
 	
 	
 # compara o valor da entidade com o valor desejado
-static func check_value(operation: Enums.OPERATION, search_value: Variant, current_value: Variant):
+static func check_value(operation: Enums.COMPARATOR, search_value: Variant, current_value: Variant):
 	match operation:
 		
-		Enums.OPERATION.EQUALS_TO: 
+		Enums.COMPARATOR.EQUALS_TO: 
 			return current_value == search_value
 			
-		Enums.OPERATION.NOT_EQUALS_TO: 
+		Enums.COMPARATOR.NOT_EQUALS_TO: 
 			return current_value != search_value
 		
-		Enums.OPERATION.ABOVE_TO: 
+		Enums.COMPARATOR.ABOVE_TO: 
 			return current_value > search_value
 			
-		Enums.OPERATION.BELOW_TO: 
+		Enums.COMPARATOR.BELOW_TO: 
 			return current_value < search_value
 			
-		Enums.OPERATION.ABOVE_OR_EQUALS_TO:
+		Enums.COMPARATOR.ABOVE_OR_EQUALS_TO:
 			return current_value >= search_value
 			
-		Enums.OPERATION.BELOW_OR_EQUALS_TO: 
+		Enums.COMPARATOR.BELOW_OR_EQUALS_TO: 
 			return current_value <= search_value
 		
-		Enums.OPERATION.CONTAINS:
+		Enums.COMPARATOR.CONTAINS:
 			return search_value in current_value
 		
-		Enums.OPERATION.NOT_CONTAINS:
+		Enums.COMPARATOR.NOT_CONTAINS:
 			return not (search_value in current_value)
 	
 	return false

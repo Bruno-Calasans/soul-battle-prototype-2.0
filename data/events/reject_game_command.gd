@@ -1,11 +1,10 @@
 extends GameEvent
-class_name RejectGameCommand
+class_name RejectGameCommandEvent
 
-var command: GameCommand
-var reason: String = ""
-
-func _init(_command: GameCommand, _reason: String = "") -> void:
+func _init(command: GameCommand, reason: String = "") -> void:
 	type = Enums.GAME_EVENT_TYPE.CANCEL_GAME_COMMAND
-	command = _command
-	reason = _reason
+	data = {
+		"command": command,
+		"reason": reason
+	}
 	print("Comando rejeitado: " + reason)

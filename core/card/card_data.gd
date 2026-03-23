@@ -9,5 +9,5 @@ class_name CardData
 @export var effects: Array[EffectData] = []
 
 
-func create(config: Dictionary) -> Card:
+func create(owner: Player, zone: Zone) -> Card:
 	return null

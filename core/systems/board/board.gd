@@ -27,3 +27,8 @@ func get_empty_slots() -> Array[BoardSlot]:
 		if slot.card == null: empty_slots.append(slot)
 		
 	return empty_slots
+
+
+func get_slot(slot_position: Enums.SLOT_POSITION) -> BoardSlot:
+	var index =  slots.find_custom(func(slot: BoardSlot): slot.position == slot_position)
+	return slots.get(index)

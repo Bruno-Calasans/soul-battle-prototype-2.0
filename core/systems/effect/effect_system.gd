@@ -32,12 +32,12 @@ func handle_card_effects(event: GameEvent):
 
 
 func handle_status_effects(event: GameEvent):
-	var status_effects = GameContext.status_effect_system.active_effects
+	var status_effects = GameContext.status_effect_system.status_effects
 	
-	for active_effect in status_effects:
-		if not active_effect.has_triggers(): continue
+	for status_effect in status_effects:
+		if not status_effect.has_triggers(): continue
 		
-		var triggers = active_effect.effect.triggers 
+		var triggers = status_effect.effect.triggers 
 		
 		for trigger in triggers:
 			if not trigger.event == event.type: continue
@@ -61,9 +61,7 @@ func resolve(effect: Effect):
 	for target in targets:
 		# adiciona à fila de ações
 		for action_data in effect.data.actions:
-			var action = action_data.to_action({
-				"target": target
-			})
+			var action = action_data.to_action(effect.source, target)
 			GameContext.action_system.add_to_queue(action)
 
 

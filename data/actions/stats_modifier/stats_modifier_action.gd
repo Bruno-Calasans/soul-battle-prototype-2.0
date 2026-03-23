@@ -1,11 +1,9 @@
 extends Action
 class_name StatsModifierAction
 
-var target: CreatureCard
-var data: StatsModifierActionData
-
-func _init(_modifier_data: StatsModifierActionData,  _target: CreatureCard,) -> void:
+func _init(_modifier_data: StatsModifierActionData,  _source: Card, _target: CreatureCard,) -> void:
 	data = _modifier_data
+	source = _source
 	target = _target
 	
 
@@ -18,10 +16,12 @@ func can_execute() -> bool:
 	
 	
 func execute():
-	var value = data.value
+	var modifier_data: StatsModifierActionData = data
+	var value = modifier_data.value
 	
-	match data.modifier_type:
-		Enums.MODIFIER_TYPE.INCREASE:
+	match modifier_data.operation:
+		
+		Enums.OPERATION.INCREASE:
 			match data.attribute:
 				Enums.ATTRIBUTE.HP:
 					var health = target.current_health + value
@@ -39,7 +39,7 @@ func execute():
 					var evade = target.current_evade + value
 					target.set_current_evade(evade)
 					
-		Enums.MODIFIER_TYPE.DECREASE:
+		Enums.OPERATION.DECREASE:
 			match data.attribute:
 				Enums.ATTRIBUTE.HP:
 					var health = target.current_health - value
@@ -57,7 +57,7 @@ func execute():
 					var evade = target.current_evade - value
 					target.set_current_evade(evade)
 					
-		Enums.MODIFIER_TYPE.SET:
+		Enums.OPERATION.SET:
 			match data.attribute:
 				Enums.ATTRIBUTE.HP:
 					target.set_current_health(value)

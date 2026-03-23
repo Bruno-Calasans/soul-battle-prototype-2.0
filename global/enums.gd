@@ -74,7 +74,8 @@ enum EFFECT_TYPE {
 	ULTIMATE,
 	SPELL,
 	STRUCTURE,
-	KEYWORD
+	KEYWORD,
+	AURA
 }
 
 enum SIDE {
@@ -109,7 +110,7 @@ enum FILTER_FIELD {
 	TARGET
 }
 
-enum OPERATION {
+enum COMPARATOR {
 	BELOW_TO,
 	ABOVE_TO,
 	EQUALS_TO,
@@ -118,6 +119,12 @@ enum OPERATION {
 	ABOVE_OR_EQUALS_TO,
 	CONTAINS,
 	NOT_CONTAINS
+}
+
+enum OPERATION {
+	INCREASE,
+	DECREASE,
+	SET
 }
 
 enum EFFECT_TRIGGER_TIMING {
@@ -163,13 +170,6 @@ enum GAME_EVENT {
 	CANCEL_ACTION
 }
 
-
-enum MODIFIER_TYPE {
-	INCREASE,
-	DECREASE,
-	SET
-}
-
 enum ATTRIBUTE {
 	HP,
 	ATTACK,
@@ -184,13 +184,29 @@ enum ZONE_TYPE {
 	BOARD
 }
 
-enum STATUS_EFFECT_TAG_RULE {
+enum RULE_MODIFIERS {
 	NO_ATTACK,
-	NO_HEAL
+	NO_HEAL,
+	NO_TARGET
 }
+
+enum EVENT_FIELD {
+	TARGET, # fora de event.data
+	SOURCE, # fota de event.data
+	VALUE, # dentro de event.data
+	DMG_TYPE, # dentro de event.data
+	SLOT # dentro de event.data
+}
+
 
 enum STATUS_EFFECT_TYPE {
 	TRIGGER, # REAGE À EVENTOS
 	MODIFIER, # MODIFICA STATUS DO CARD
 	RULE_CHANGE # MUDA REGRAS. EX.: NÃO ATACAR, NÃO ATIVAR HABILIDADE
+}
+
+enum SLOT_POSITION {
+	LEFT,
+	MIDDLE,
+	RIGHT,
 }

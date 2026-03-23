@@ -1,7 +1,6 @@
 extends Resource
 class_name ActionData
 
-@export var type: Enums.ACTION_TYPE
 
-func to_action(config: Dictionary[String, Variant]) -> Action:
+func to_action(source: Variant, target: Variant = null) -> Action:
 	return null

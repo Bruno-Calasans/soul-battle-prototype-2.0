@@ -15,8 +15,6 @@ class_name CreatureCardData
 @export var resistence: CreatureResistence
 
 
-func create(config: Dictionary) -> CreatureCard:
-	assert(config.has('owner'), "Parâmetro 'owner' faltando")
-	assert(config.has('zone'), "Parâmetro 'zone' faltando")
-	return CreatureCard.new(self, config.owner, config.zone)
+func to_card(owner: Player, zone: Zone) -> CreatureCard:
+	return CreatureCard.new(self, owner, zone)
 	

@@ -2,9 +2,9 @@ extends ActionData
 class_name StatsModifierActionData
 
 @export var attribute: Enums.ATTRIBUTE
-@export var modifier_type: Enums.MODIFIER_TYPE
+@export var operation: Enums.OPERATION
 @export var value: int
 
-func to_action(config: Dictionary[String, Variant]) -> Action:
-	assert(config.has('target'), "Parâmetro 'target' não encontrado")
-	return StatsModifierAction.new(self, config.target)
+	
+func to_action(source: Variant, target: Variant = null) -> Action:
+	return StatsModifierAction.new(self, source, target)

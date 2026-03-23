@@ -1,7 +1,10 @@
 extends Resource
 class_name GameCommand
 
-var is_invalid: bool = false
+var type: Enums.COMMAND_TYPE
+var source: Variant
+var data: Dictionary[String, Variant] = {}
+var is_rejected: bool = false
 var reason: String = ""
 
 
@@ -16,6 +19,6 @@ func to_action() -> Action:
 	
 	
 func reject(_reason: String = ""):
-	is_invalid = true
+	is_rejected = true
 	reason = _reason
-	RejectGameCommand.new(self, reason).emit()
+	RejectGameCommandEvent.new(self, reason).emit()
