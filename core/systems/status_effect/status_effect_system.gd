@@ -19,7 +19,7 @@ func update_duration():
 		if status_effect.is_expired(): remove(status_effect)
 
 
-func apply_event_modifier(status_effect: StatusEffect, event: GameEvent):
+func handle_event(status_effect: StatusEffect, event: GameEvent):
 	var event_modifiers = status_effect.data.event_modifiers
 	
 	for event_modifier in event_modifiers:
@@ -69,7 +69,6 @@ func handle_triggers(status_effect: StatusEffect, event: GameEvent):
 			var action = action_data.to_action(event.target, event.target)
 			GameContext.action_system.add_to_queue(action)
 		
-	
 
 func process(event: GameEvent):
 	
@@ -77,11 +76,9 @@ func process(event: GameEvent):
 		
 		# event modifiers
 		if status_effect.has_event_modifiers():
-			apply_event_modifier(status_effect, event)
-			
+			handle_event(status_effect, event)
+		
 		# triggers
 		if status_effect.has_triggers():
 			handle_triggers(status_effect, event)
 			
-			
-	

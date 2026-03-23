@@ -15,45 +15,25 @@ func can_execute() -> bool:
 	var player: Player = source if source is Player else source.owner
 	var card_data: CreatureCardData = data.card_data
 	var slot: BoardSlot = data.slot
+	var validations: Array[ValidationResult] = []
 	
-	if card_data == null: 
-		reject("Card não encontrado")
-		return false
-		
-	if not player.board.has_empty_slot():
-		reject("Nenhum slot disponnível")
-		return false
-		
 	if source is Player:
-		# dados inválidos
-		if source == null: 
-			reject("Jogador não encontrado")
-			return false
+		var player_validation = SummonRule.validate_player(source, card_data.cost)
+		validations.append(player_validation)
+		
+	if source is Card:
+		var card_validation = SummonRule.validate_card(card_data)
+		validations.append(card_validation)
 			
-		# jogador não tem energia
-		if not source.has_energy(card_data.cost): 
-			reject("Jogador não tem energia o suficiente")
+	var slot_validation = SummonRule.validate_slot(slot, player)
+	validations.append(slot_validation)
+		
+	for validation in validations:
+		if not validation.ok:
+			reject(validation.reason)
 			return false
 	
-	
-	if source is CreatureCard:
-		if source == null: 
-			reject("Criatura não encontrada")
-			return false
-		
-	if slot:
-		# se slot está vazio
-		if not slot.card == null:
-			reject("Slot não está vazio")
-			return false
-			
-		# se slot é do jogador
-		if not slot.owner == player:
-			reject("Jogador não possui esse slot")
-		return false
-		
 	return true
-
 
 func to_action():
 	var summon_action_data = SummonActionData.new(data.card_data)
