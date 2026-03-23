@@ -1,7 +1,5 @@
 class_name SummonRule
 
-var results: Array[ValidationResult] = []
-
 
 static func validate_slot(slot: BoardSlot, owner: Player) -> ValidationResult:
 	

@@ -1,23 +1,18 @@
 extends Action
 class_name DamageAction
 
-var dmg_data: DamageActionData
-var source: Card
-var target: Card
 
-func _init(_dmg_data: DamageActionData, _source: Card, _target: Card) -> void:
-	dmg_data = _dmg_data
-	source = _source
-	target = _target
+func _init(dmg_data: DamageActionData, dmg_source: Card, dmg_target: CreatureCard) -> void:
+	data = dmg_data
+	source = dmg_source
+	target = dmg_target
 
 
 func can_execute() -> bool:
-	if target == null:
-		cancel("Target não encontrado")
+	var dmg_validation = DamageRule.validate(source, target)
+	
+	if not dmg_validation.ok:
 		return false
-		
-	if source == null:
-		cancel("Source não encontrado")
 		
 	return true
 
@@ -26,8 +21,8 @@ func execute():
 	var damage = GameContext.damage_system.calculate_dmg(
 		source, 
 		target, 
-		dmg_data.value, 
-		dmg_data.dmg_type
+		data.value, 
+		data.type
 	)
 	target.take_damage(damage)
-	DamageEvent.new(source, target).emit()
+	DamageEvent.new(source, target, data).emit()

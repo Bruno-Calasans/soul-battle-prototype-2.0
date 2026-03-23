@@ -3,8 +3,6 @@ extends Node
 
 # core system
 var state: GameState
-var rule_engine: RuleEngine
-var game_controller: GameController
 
 # systems
 var command_system: CommandSystem
@@ -29,7 +27,5 @@ func _init() -> void:
 	command_system = CommandSystem.new()
 	action_system = ActionSystem.new()
 	effect_system = EffectSystem.new()
-	game_controller = GameController.new()
 	dmg_system = DamageSystem.new()
-	rule_engine = RuleEngine.new()
 	status_effect_system = StatusEffectSystem.new()
