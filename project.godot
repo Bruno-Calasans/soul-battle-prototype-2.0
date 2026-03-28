@@ -21,6 +21,8 @@ Enums="*uid://cerq8yywlftkj"
 Limits="*uid://c48icj45dqwcm"
 Utils="*uid://d0x666jhti4fa"
 GameContext="*uid://b4tyjsmgkxy5"
+AttackTypeEnum="*uid://dxhuh08spxy0w"
+DestroyCauseEnum="*uid://dgyrwhvc24kq"
 
 [physics]
 

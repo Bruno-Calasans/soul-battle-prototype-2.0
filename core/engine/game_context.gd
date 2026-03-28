@@ -12,6 +12,7 @@ var effect_system: EffectSystem
 var zone_system: ZoneSystem
 var damage_system: DamageSystem
 var status_effect_system: StatusEffectSystem
+var state_based_system: StateBasedSystem
 
 # gameplay system
 var combat_system: CombatSystem
@@ -29,3 +30,4 @@ func _init() -> void:
 	effect_system = EffectSystem.new()
 	damage_system = DamageSystem.new()
 	status_effect_system = StatusEffectSystem.new()
+	state_based_system = StateBasedSystem.new()

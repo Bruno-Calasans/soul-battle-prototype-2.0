@@ -6,11 +6,11 @@ class_name TriggerResolver
 
 static func get_effects(event: GameEvent):
 	# verifica efeitos das cartas no campo
-	var cards: Array[Card] = GameContext.state.get_all_cards()
+	var cards: Array[Card] = GameContext.state.get_all_board_cards()
 	var active_effects: Array[Effect] = []
 	
 	for card in cards:
-		print("Verificando se card '%s' tem efeito para ativar" % card.data.id)
+		Utils.log_effect("Verificando se card '%s' tem efeito para ativar" % card.data.id)
 		# verifica se tem efeito para ativar
 		if not card.has_effect():
 			continue

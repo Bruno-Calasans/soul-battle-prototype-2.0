@@ -1,6 +1,7 @@
-extends Node
+extends RefCounted
+class_name AttackRule
 
-static func validate(source: Card, target: CreatureCard):
+static func validate(source: GameEntity, target: GameEntity) -> ValidationResult:
 	var validation = ValidationResult.new()
 	
 	if source == null:
@@ -9,10 +10,6 @@ static func validate(source: Card, target: CreatureCard):
 	if target == null:
 		validation.fail("Target não encontrado")
 		
-		
-		
-	RuleSystem.apply_rules(Enums.RULE_HOOK.BEFORE_ATTACK, )
-	
 	return validation
 		
 		

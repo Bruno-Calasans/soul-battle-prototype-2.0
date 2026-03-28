@@ -5,6 +5,7 @@ var engine: GameEngine
 
 func _ready() -> void:
 	engine = GameEngine.new()
-	Test1.run()
-	Test2.run()
+	#Test1.run()
+	#Test2.run()
+	AttackTest.run()
 	

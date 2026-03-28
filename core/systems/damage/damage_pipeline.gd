@@ -4,7 +4,7 @@ class_name DamagePipeline
 
 var steps: Array[DamageStep] = []
 
-func process(dmg_context: DamageContext):
+func process(dmg_context: DamageContext) -> int:
 	for step in steps:
 		step.apply(dmg_context)
 		

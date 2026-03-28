@@ -13,7 +13,7 @@ func remove(status_effect: StatusEffect):
 
 
 func get_all_status_effects() -> Array[StatusEffect]:
-	var cards := GameContext.state.get_all_cards()
+	var cards := GameContext.state.get_all_board_cards()
 	var found_status_effects: Array[StatusEffect] = []
 	
 	for card in cards:
@@ -25,7 +25,7 @@ func get_all_status_effects() -> Array[StatusEffect]:
 
 
 func update_duration():
-	var cards := GameContext.state.get_all_cards()
+	var cards := GameContext.state.get_all_board_cards()
 	for card in cards:
 		if card is CreatureCard:
 			for status_effect in card.status_effects:
@@ -87,7 +87,7 @@ func handle_triggers(status_effect: StatusEffect, event: GameEvent):
 		
 
 func process(event: GameEvent):
-	print("Processando status effects")
+	Utils.log_warn("Processando status effects")
 	var status_effects := get_all_status_effects()
 	
 	for status_effect in status_effects:

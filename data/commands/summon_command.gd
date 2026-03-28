@@ -2,6 +2,10 @@
 extends GameCommand
 class_name SummonCardCommand
 
+# source = Player or Card
+# target = Card invocado
+# data = quem quer invoca (source), o que quer invocar (target), onde quer invocar (slot)
+
 func _init(card_data: CreatureCardData, summoner: Variant, slot: BoardSlot = null) -> void:
 	type = Enums.COMMAND_TYPE.SUMMON
 	source = summoner

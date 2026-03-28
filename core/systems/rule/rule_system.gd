@@ -20,7 +20,7 @@ static func apply_rules(hook: Enums.RULE_HOOK, context: RuleContext):
 
 static func collect_all_rule_modifiers() -> Array[RuleModifier] :
 	var rule_modifiers: Array[RuleModifier] = []
-	var cards = GameContext.state.get_all_cards()
+	var cards = GameContext.state.get_all_board_cards()
 	
 	for card in cards:
 		if card is CreatureCard:

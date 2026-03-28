@@ -5,4 +5,8 @@ func _init(attacker: CreatureCard, attacked: CreatureCard) -> void:
 	type = Enums.GAME_EVENT.ATTACK
 	source = attacker
 	target = attacked
-	print("{0} atacou {1}".format([attacker.data.id, attacked.data.id]))
+
+
+func show_log():
+	Utils.log_event("ATTACK EVENT: {0} atacou {1}".format([source.data.id, target.data.id]))
+	

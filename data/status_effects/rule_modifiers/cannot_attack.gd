@@ -7,15 +7,16 @@ func _init() -> void:
 	
 	
 func can_apply(context: RuleContext) -> bool:
-	if not context.action.type == Enums.ACTION_TYPE.ATTACK:
+	var action := context.action
+	var source := context.source
+
+	if not action is AttackAction:
 		return false
 		
-		
-	if not context.source is CreatureCard:
+	if not source is CreatureCard:
 		return false
 		
-	
-	if not context.source.has_rule_modifier(self):
+	if not source.has_rule_modifier(self):
 		return false
 		
 	return true

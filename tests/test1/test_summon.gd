@@ -1,5 +1,5 @@
 extends Node
-class_name Test1
+class_name TestSummon
 
 static func run():
 	# teste player

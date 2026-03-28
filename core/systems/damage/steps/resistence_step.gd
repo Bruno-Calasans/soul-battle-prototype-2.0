@@ -9,3 +9,6 @@ func apply(dmg_context: DamageContext):
 		
 	var resistence = dmg_context.target.get_resistence(dmg_context.dmg_type)
 	dmg_context.damage -= resistence
+	
+	Utils.log_warn("Aplicando Resistência")
+	Utils.show_value("TARGET RESISTENCE", resistence)

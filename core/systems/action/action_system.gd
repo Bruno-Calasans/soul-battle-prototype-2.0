@@ -22,7 +22,8 @@ func has_actions() -> bool:
 
 
 func process():
-	print("Processando ações...")
+	Utils.log_warn("Processando ações")
+	
 	while has_actions():
 		var action = get_next()
 		
@@ -30,6 +31,6 @@ func process():
 		
 		if not action.can_execute(): continue
 			
-		print("Executando ação: " + action.get_script().get_global_name())
+		Utils.log_action("EXECUTANDO AÇÃO: " + action.get_script().get_global_name())
 		action.execute()
 	

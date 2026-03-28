@@ -1,12 +1,12 @@
 # card em jogo
-extends Resource
+extends GameEntity
 class_name Card
 
 var data: CardData
 var owner: Player
 var zone: Zone
 var slot: BoardSlot
-var destroyed: bool = false
+var is_destroyed: bool = false
 
 func get_cost():
 	return data.cost
@@ -36,8 +36,4 @@ func has_effect():
 
 
 func destroy():
-	destroyed = true
-
-
-func is_destroyed() -> bool:
-	return false
+	is_destroyed = true

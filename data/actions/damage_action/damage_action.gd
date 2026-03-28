@@ -18,11 +18,17 @@ func can_execute() -> bool:
 
 
 func execute():
-	var damage = GameContext.damage_system.calculate_dmg(
+	var final_damage = GameContext.damage_system.calculate_dmg(
 		source, 
 		target, 
 		data.value, 
 		data.type
 	)
-	target.take_damage(damage)
+	
+	# recebe dano
+	target.take_damage(final_damage)
+	
+	data.value = final_damage
 	DamageEvent.new(source, target, data).emit()
+	
+	

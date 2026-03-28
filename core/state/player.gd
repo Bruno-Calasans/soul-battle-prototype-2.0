@@ -1,4 +1,4 @@
-extends Resource
+extends GameEntity
 class_name Player
 
 var deck: Deck

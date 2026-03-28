@@ -2,8 +2,10 @@ extends Resource
 class_name GameCommand
 
 var type: Enums.COMMAND_TYPE
-var source: Variant
-var data: Dictionary[String, Variant] = {}
+var source: Variant # quem
+var target: Variant # o quê
+var data: Variant # como
+
 var is_rejected: bool = false
 var reason: String = ""
 

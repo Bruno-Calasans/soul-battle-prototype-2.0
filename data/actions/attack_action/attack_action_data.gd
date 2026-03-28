@@ -1,15 +1,11 @@
 extends ActionData
 class_name AttackActionData
 
-var attacker: Card
-var attacked:  Card
+@export var apply_status_effect: StatusEffectData
+@export var ignore_def: bool
 
-func _init(attacker_card: Card, attacked_card: Card) -> void:
-	attacker = attacker_card
-	attacked = attacked_card
 	
-
-func to_action(source: Variant, target: Variant) -> Action:
+func to_action(source: GameEntity, target: GameEntity) -> Action:
 	var dmg_data: DamageActionData = DamageActionData.new()
 	dmg_data.value = source.get_current_atk()
 	dmg_data.type = attacker.data.dmg_type

@@ -63,14 +63,14 @@ func resolve(effect: Effect):
 		for action_data in effect.data.actions:
 			var action = action_data.to_action(effect.source, target)
 			GameContext.action_system.add_to_queue(action)
+	Utils.log_effect("RESOLVED EFFECT: " + effect.get_script().get_global_name())
 
 
 func process(event: GameEvent):
-	print("Verificando efeitos...")
+	Utils.log_warn("Processando efeitos")
 	handle_event(event)
 	
 	while has_effects():
-			print("Resolvendo efeito...")
 			var effect = get_next()
 			resolve(effect)
 		

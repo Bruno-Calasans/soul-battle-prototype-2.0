@@ -19,6 +19,7 @@ func has_commands() -> bool:
 	
 	
 func process():
+	Utils.log_warn("Processando comandos...")
 	while has_commands():
 		var command = get_next()
 		
@@ -29,5 +30,5 @@ func process():
 		if not command.can_execute(): continue
 			
 		# adiciona à fila de ações
-		print("Executando comando: " + command.get_script().get_global_name())
+		Utils.log_cmd("Executando comando: " + command.get_script().get_global_name())
 		GameContext.action_system.add_to_queue(command.to_action())
