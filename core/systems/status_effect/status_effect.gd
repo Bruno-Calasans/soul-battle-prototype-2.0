@@ -2,7 +2,7 @@ extends Resource
 class_name StatusEffect
 
 var data: StatusEffectData
-var source: Card
+var source: GameEntity
 var target: CreatureCard
 var remaining_turns: int
 var stacks: int

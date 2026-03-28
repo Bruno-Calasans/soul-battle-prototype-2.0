@@ -2,16 +2,6 @@ extends Resource
 class_name StatusEffectSystem
 
 
-func apply(effect_data: StatusEffectData, source: Card, target: CreatureCard):
-	var status_effect = StatusEffect.new(effect_data, source, target)
-	target.status_effects.append(status_effect)
-	
-
-func remove(status_effect: StatusEffect):
-	var target := status_effect.target
-	target.status_effects.erase(status_effect)
-
-
 func get_all_status_effects() -> Array[StatusEffect]:
 	var cards := GameContext.state.get_all_board_cards()
 	var found_status_effects: Array[StatusEffect] = []
@@ -30,7 +20,8 @@ func update_duration():
 		if card is CreatureCard:
 			for status_effect in card.status_effects:
 				status_effect.decrease_duration()
-				if status_effect.is_expired(): remove(status_effect)
+				if status_effect.is_expired(): 
+					card.remove_status_effect(status_effect)
 
 
 func handle_event(status_effect: StatusEffect, event: GameEvent):

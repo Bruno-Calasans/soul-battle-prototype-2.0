@@ -19,7 +19,6 @@ func has_events() -> bool:
 	
 func process():
 	Utils.log_warn("Processando eventos")
-	var event_copies = []
 	while has_events():
 		var event = get_next()
 		event.show_log()

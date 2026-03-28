@@ -2,10 +2,13 @@ extends GameEvent
 class_name ApplyStatusEffectEvent
 
 
-func _init(effect: StatusEffect, effect_source: Card, effect_target: CreatureCard):
-	type = Enums.GAME_EVENT_TYPE.APPLY_STATUS_EFFECT
-	source = effect_source
-	target = effect_target
+func _init(status_effect: StatusEffect):
+	type = Enums.GAME_EVENT.APPLY_STATUS_EFFECT
+	source = status_effect.source
+	target = status_effect.target
 	data = {
-		"effect_status": effect
+		"status_effect": status_effect
 	}
+
+func show_log():
+	Utils.log_event("STATUS EFFECT APPLIED: {0}".format([data.status_effect.data.id]))

@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://cxioet8kp4ftu"
 
 [resource]
 script = ExtResource("3_no8ir")
-id = "FURY I"
+id = "FURY II"
 duration = 2
 max_stacks = 1
 stats_modifiers = Array[ExtResource("4_xlflc")]([SubResource("Resource_84xsl")])

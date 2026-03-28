@@ -10,6 +10,7 @@ var current_evade: int
 var current_resistence: CreatureResistence
 var status_effects: Array[StatusEffect] = []
 
+
 func _init(creature_data: CreatureCardData, _owner: Player, _zone: Zone) -> void:
 	data = creature_data
 	owner = _owner
@@ -99,5 +100,15 @@ func has_rule_modifier(rule_modifier: RuleModifier):
 			return false
 			
 	return true
-		
 	
+	
+func add_status_effect(status_effect: StatusEffect):
+	status_effects.append(status_effect)	
+
+
+func remove_status_effect(status_effect: StatusEffect):
+	status_effects.erase(status_effect)
+
+
+func is_immune_to(status_effect: StatusEffectData):
+	return false

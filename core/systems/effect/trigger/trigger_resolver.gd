@@ -24,6 +24,7 @@ static func get_effects(event: GameEvent):
 			
 	return active_effects
 
+
 static func can_trigger(effect: Effect, event: GameEvent):
 	var effect_trigger = effect.data.trigger
 	

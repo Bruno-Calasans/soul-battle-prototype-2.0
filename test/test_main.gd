@@ -5,7 +5,7 @@ var engine: GameEngine
 
 func _ready() -> void:
 	engine = GameEngine.new()
-	SummonTest.run()
-	#Test2.run()
+	#SummonTest.run()
+	StatusEffectStatsTest.run()
 	#AttackTest.run()
 	

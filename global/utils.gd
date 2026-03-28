@@ -10,12 +10,12 @@ func log_warn(msg):
 	CLog.w(msg)
 	
 	
-func log_info(msg: String):
+func log_info(msg: Variant):
 	CLog.c(Color.SEA_GREEN, msg)
 	
 	
 	
-func log_cmd(msg: String):
+func log_cmd(msg: Variant):
 	CLog.c(Color.DARK_ORANGE, msg)
 
 
@@ -23,13 +23,13 @@ func log_action(msg):
 	CLog.c(Color.GREEN, msg)
 
 
-func log_event(msg: String):
+func log_event(msg: Variant):
 	CLog.c(Color.CORAL, msg)
 
 
-func log_effect(msg: String):
+func log_effect(msg: Variant):
 	CLog.c(Color.BURLYWOOD, msg)
 	
 
-func show_value(title: String, value: Variant):
+func show_value(title: Variant, value: Variant):
 	CLog.c(Color.MEDIUM_PURPLE, title + " = {0}".format([value]))
