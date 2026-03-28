@@ -1,5 +1,5 @@
 extends Node
-class_name TestSummon
+class_name SummonTest
 
 static func run():
 	# teste player
@@ -16,8 +16,8 @@ static func run():
 	var summon_warrior_cmd = SummonCardCommand.new(warrior_data, player)
 	var summon_king_cmd = SummonCardCommand.new(king_data, player)
 	
-	print("warrior atk before = ", warrior.current_atk)
-	print("king atk before = ", king.current_atk)
+	Utils.show_value("warrior ATK before", warrior.current_atk)
+	Utils.show_value("king ATK before", king.current_atk)
 	
 	#teste effect
 	GameContext.command_system.add_to_queue(summon_warrior_cmd)
@@ -31,6 +31,5 @@ static func run():
 	GameContext.action_system.process()
 	GameContext.event_system.process()
 	
-	for card in GameContext.state.get_all_cards():
-		print("Card '%s' " % card.data.id)
-		print("atk after = ", card.current_atk)
+	for card in GameContext.state.get_all_board_cards():
+		Utils.show_value("{0} ATK after".format([card.data.id]), card.current_atk)

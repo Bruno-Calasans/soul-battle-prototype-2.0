@@ -2,20 +2,22 @@ extends Action
 class_name SummonAction
 
 func _init(
-	summon_action_data: SummonActionData,
-	summoner: Variant,
- 	slot: BoardSlot = null
+	summon_action_data: CreatureCardData,
+	summoner: GameEntity,
+ 	slot: BoardSlot = null,
 	) -> void:
 	type = Enums.ACTION_TYPE.SUMMON
 	source = summoner
-	target = slot
-	data = summon_action_data
+	data = {
+		"slot": slot,
+		"card_data": summon_action_data
+	}
 	
 
 func can_execute() -> bool:
 	var player: Player = source if source is Player else source.owner
-	var card_data = (data as SummonActionData).card_data
-	var slot: BoardSlot = target
+	var card_data: CreatureCardData = data.card_data 
+	var slot: BoardSlot = data.slot
 	var validations: Array[ValidationResult] = []
 	
 	if source is Player:
@@ -26,8 +28,9 @@ func can_execute() -> bool:
 		var card_validation = SummonRule.validate_card(card_data)
 		validations.append(card_validation)
 			
-	var slot_validation = SummonRule.validate_slot(slot, player)
-	validations.append(slot_validation)
+	if slot is BoardSlot:
+		var slot_validation = SummonRule.validate_slot(slot, player)
+		validations.append(slot_validation)
 		
 	for validation in validations:
 		if not validation.ok:
@@ -39,7 +42,7 @@ func can_execute() -> bool:
 
 func execute():
 	var card_data: CreatureCardData = data.card_data
-	var slot: BoardSlot = target
+	var slot: BoardSlot = data.slot
 	var card: CreatureCard
 	
 	if source is Player:
@@ -51,4 +54,4 @@ func execute():
 		card = card_data.to_card(source.owner, source.owner.board)
 		GameContext.zone_system.move_card(card, source.owner, slot)
 		
-	SummonEvent.new(source, card, slot).emit()
+	SummonEvent.new(card, source, slot).emit()

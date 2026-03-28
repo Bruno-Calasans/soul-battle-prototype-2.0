@@ -4,7 +4,7 @@ class_name TargetResolver
 
 static func get_targets(effect: Effect) -> Array[Card]:
 	var found_targets: Array[Card] = []
-	var cards: Array[Card] = GameContext.state.get_all_cards()
+	var cards: Array[Card] = GameContext.state.get_all_board_cards()
 	var effect_target = effect.data.target
 	
 	for card in cards:

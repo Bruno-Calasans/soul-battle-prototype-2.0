@@ -3,8 +3,8 @@ extends GameEvent
 class_name SummonEvent
 
 func _init(
-	summoner: Variant, 
 	summoned_card: CreatureCard,
+	summoner: GameEntity, 
 	slot: BoardSlot 
 	) -> void:
 	type = Enums.GAME_EVENT.SUMMON
@@ -13,4 +13,9 @@ func _init(
 	data = {
 		"slot": slot
 	}
-	print("Jogador invocou criatura %s!" % target.data.id)
+
+
+func show_log():
+	var summoner_id = source.data.id if source is CreatureCard else "Player"
+	Utils.log_event("{0} invocou {1}!".format([summoner_id, target.data.id]))
+	

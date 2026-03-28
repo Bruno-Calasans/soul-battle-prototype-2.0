@@ -20,9 +20,8 @@ static func get_effects(event: GameEvent):
 			if not TriggerResolver.can_trigger(effect, event): continue
 			
 			# transforma effect_data em effect
-			print("Efeito encontrado: " + effect.get_script().get_global_name())
 			active_effects.append(effect)
-			#GameContext.effect_system.add_to_queue(effect)
+			
 	return active_effects
 
 static func can_trigger(effect: Effect, event: GameEvent):

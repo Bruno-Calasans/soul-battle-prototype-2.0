@@ -54,6 +54,7 @@ func handle_event(event: GameEvent):
 
 
 func resolve(effect: Effect):
+	GameContext.event_system.add_to_queue(BeforeActiveEffectEvent.new(effect))
 	# pega os alvos do efeito
 	var targets = TargetResolver.get_targets(effect)
 	
@@ -63,7 +64,7 @@ func resolve(effect: Effect):
 		for action_data in effect.data.actions:
 			var action = action_data.to_action(effect.source, target)
 			GameContext.action_system.add_to_queue(action)
-	Utils.log_effect("RESOLVED EFFECT: " + effect.get_script().get_global_name())
+	Utils.log_effect("EFEITO ENCONTRADO DO CARD " + effect.source.data.id)
 
 
 func process(event: GameEvent):

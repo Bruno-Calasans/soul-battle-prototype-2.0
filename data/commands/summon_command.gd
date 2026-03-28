@@ -6,11 +6,10 @@ class_name SummonCardCommand
 # target = Card invocado
 # data = quem quer invoca (source), o que quer invocar (target), onde quer invocar (slot)
 
-func _init(card_data: CreatureCardData, summoner: Variant, slot: BoardSlot = null) -> void:
+func _init(card_data: CreatureCardData, summoner: GameEntity, slot: BoardSlot = null) -> void:
 	type = Enums.COMMAND_TYPE.SUMMON
 	source = summoner
 	data = {
-		"summoner": summoner,
 		"card_data": card_data,
 		"slot": slot
 	}
@@ -30,8 +29,9 @@ func can_execute() -> bool:
 		var card_validation = SummonRule.validate_card(card_data)
 		validations.append(card_validation)
 			
-	var slot_validation = SummonRule.validate_slot(slot, player)
-	validations.append(slot_validation)
+	if slot is BoardSlot:
+		var slot_validation = SummonRule.validate_slot(slot, player)
+		validations.append(slot_validation)
 		
 	for validation in validations:
 		if not validation.ok:
@@ -42,6 +42,5 @@ func can_execute() -> bool:
 
 
 func to_action():
-	var summon_action_data = SummonActionData.new(data.card_data)
-	return SummonAction.new(summon_action_data, source, data.slot)
+	return SummonAction.new(data.card_data, source, data.slot)
 	
