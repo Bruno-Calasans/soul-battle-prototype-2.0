@@ -15,6 +15,6 @@ class_name CreatureCardData
 @export var resistence: CreatureResistence
 
 
-func to_card(owner: Player, zone: Zone) -> CreatureCard:
-	return CreatureCard.new(self, owner, zone)
+func to_card(owner: Player, start_zone: Zone) -> CreatureCard:
+	return CreatureCard.new(self, owner, start_zone)
 	

@@ -8,6 +8,7 @@ var current_health: int
 var current_def: int
 var current_evade: int
 var current_resistence: CreatureResistence
+var status_effects: Array[StatusEffect] = []
 
 func _init(creature_data: CreatureCardData, _owner: Player, _zone: Zone) -> void:
 	data = creature_data
@@ -15,8 +16,8 @@ func _init(creature_data: CreatureCardData, _owner: Player, _zone: Zone) -> void
 	zone = _zone
 	current_atk = data.base_atk
 	current_def = data.base_def
-	current_evade = data.base_def
 	current_evade = data.base_evade
+	current_health = data.base_health
 	current_resistence = data.resistence
 
 	
@@ -40,5 +41,63 @@ func get_resistence(dmg_type: Enums.DMG_TYPE):
 	return current_resistence.get_resistence(dmg_type)
 	
 
+func get_current_atk() -> int:
+	var atk: int = current_atk
+	var atk_modifiers := get_stats_modifiers(Enums.ATTRIBUTE.ATTACK)
+	
+	for atk_modifier in atk_modifiers:
+		atk += atk_modifier.value 
+	
+	return atk
+
+
+func get_current_def() -> int:
+	var def: int = current_def
+	var def_modifiers := get_stats_modifiers(Enums.ATTRIBUTE.DEF)
+	
+	for deff_modifier in def_modifiers:
+		def += deff_modifier.value 
+	
+	return def
+		
+		
 func take_damage(value: int):
 	set_current_health(current_health - value)
+
+
+func get_stats_modifiers(stat: Enums.ATTRIBUTE) -> Array[StatusEffectModifierData]:
+	var found_modifiers: Array[StatusEffectModifierData] = []
+	
+	for effect in status_effects:
+		
+		if not effect.has_stats_modifiers(): continue
+		
+		for modifier in effect.data.stats_modifiers:
+			if modifier.attribute == stat: 
+				found_modifiers.append(modifier)
+				
+	return found_modifiers
+
+
+func get_all_rule_modifiers():
+	var modifiers: Array[RuleModifier] = []
+	for status_effect in status_effects:
+		if not status_effect.has_rule_modifiers():
+			continue
+		modifiers.append_array(status_effect.data.rule_modifiers)
+		
+	return modifiers
+		
+		
+func has_rule_modifier(rule_modifier: RuleModifier):
+	
+	for status_effect in status_effects:
+		if not status_effect.has_rule_modifiers():
+			continue
+			
+		if not status_effect.data.rule_modifiers.find(rule_modifier):
+			return false
+			
+	return true
+		
+	

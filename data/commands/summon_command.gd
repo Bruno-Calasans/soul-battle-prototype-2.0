@@ -2,10 +2,11 @@
 extends GameCommand
 class_name SummonCardCommand
 
-func _init(card_data: CreatureCardData, _source: Variant, slot: BoardSlot = null) -> void:
+func _init(card_data: CreatureCardData, summoner: Variant, slot: BoardSlot = null) -> void:
 	type = Enums.COMMAND_TYPE.SUMMON
-	source = _source
+	source = summoner
 	data = {
+		"summoner": summoner,
 		"card_data": card_data,
 		"slot": slot
 	}
@@ -34,6 +35,7 @@ func can_execute() -> bool:
 			return false
 	
 	return true
+
 
 func to_action():
 	var summon_action_data = SummonActionData.new(data.card_data)

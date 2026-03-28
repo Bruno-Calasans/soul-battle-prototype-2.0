@@ -3,17 +3,17 @@ class_name Board
 
 var slots: Array[BoardSlot] = []
 
-func _init(_owner: Player, slot_num: int = 3) -> void:
+func _init(_owner: Player, slot_amount: int = 3) -> void:
 	owner = _owner
-	for i in range(slot_num):
+	for i in range(slot_amount):
 		slots.append(BoardSlot.new(_owner))
 		
 	
-func summon_card(card: Card, _slot: BoardSlot):
+func summon_card(summoned_card: Card, summoned_slot: BoardSlot):
 	for slot in slots:
-		if  slot == _slot:
-			slot.card = card
-			card.slot = slot
+		if  slot == summoned_slot:
+			slot.card = summoned_card
+			summoned_card.slot = slot
 	
 	
 func has_empty_slot():
@@ -30,5 +30,10 @@ func get_empty_slots() -> Array[BoardSlot]:
 
 
 func get_slot(slot_position: Enums.SLOT_POSITION) -> BoardSlot:
-	var index =  slots.find_custom(func(slot: BoardSlot): slot.position == slot_position)
-	return slots.get(index)
+	var found_slot: BoardSlot
+	
+	for slot in slots:
+		if slot.position == slot_position:
+			found_slot = slot
+			
+	return found_slot

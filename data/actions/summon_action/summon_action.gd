@@ -2,14 +2,14 @@ extends Action
 class_name SummonAction
 
 func _init(
-	summon_data: SummonActionData,
-	_source: Variant,
-	_target: BoardSlot = null
+	summon_action_data: SummonActionData,
+	summoner: Variant,
+ 	slot: BoardSlot = null
 	) -> void:
 	type = Enums.ACTION_TYPE.SUMMON
-	source = _source
-	target = _target
-	data = summon_data
+	source = summoner
+	target = slot
+	data = summon_action_data
 	
 
 func can_execute() -> bool:
@@ -38,7 +38,7 @@ func can_execute() -> bool:
 
 
 func execute():
-	var card_data = data.card_data
+	var card_data: CreatureCardData = data.card_data
 	var slot: BoardSlot = target
 	var card: CreatureCard
 	

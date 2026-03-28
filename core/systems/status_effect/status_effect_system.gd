@@ -1,22 +1,36 @@
 extends Resource
 class_name StatusEffectSystem
 
-var status_effects: Array[StatusEffect] = []
 
-
-func apply(effect_data: StatusEffectData, source: Card, target: Card):
+func apply(effect_data: StatusEffectData, source: Card, target: CreatureCard):
 	var status_effect = StatusEffect.new(effect_data, source, target)
-	status_effects.append(status_effect)
+	target.status_effects.append(status_effect)
 	
-	
+
 func remove(status_effect: StatusEffect):
-	status_effects.erase(status_effect)
+	var target := status_effect.target
+	target.status_effects.erase(status_effect)
+
+
+func get_all_status_effects() -> Array[StatusEffect]:
+	var cards := GameContext.state.get_all_cards()
+	var found_status_effects: Array[StatusEffect] = []
+	
+	for card in cards:
+		if card is CreatureCard:
+			for status_effect in card.status_effects:
+				found_status_effects.append(status_effect)
+				
+	return found_status_effects
 
 
 func update_duration():
-	for status_effect in status_effects:
-		status_effect.decrease_duration()
-		if status_effect.is_expired(): remove(status_effect)
+	var cards := GameContext.state.get_all_cards()
+	for card in cards:
+		if card is CreatureCard:
+			for status_effect in card.status_effects:
+				status_effect.decrease_duration()
+				if status_effect.is_expired(): remove(status_effect)
 
 
 func handle_event(status_effect: StatusEffect, event: GameEvent):
@@ -63,14 +77,18 @@ func handle_triggers(status_effect: StatusEffect, event: GameEvent):
 	
 	for trigger in triggers:
 		if not can_trigger(trigger, event): return
-		if trigger.actions.is_empty(): continue
+		if trigger.actions.is_empty(): return
+		
+		print("Status effect ativado = ", status_effect.data.id)
 		
 		for action_data in trigger.actions:
-			var action = action_data.to_action(event.target, event.target)
+			var action = action_data.to_action(status_effect.target, status_effect.target)
 			GameContext.action_system.add_to_queue(action)
 		
 
 func process(event: GameEvent):
+	print("Processando status effects")
+	var status_effects := get_all_status_effects()
 	
 	for status_effect in status_effects:
 		

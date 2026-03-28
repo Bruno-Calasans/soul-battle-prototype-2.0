@@ -1,5 +1,13 @@
 extends Resource
-class_name StateBasedActions
+class_name StateBasedSystem
+
+
+func check_cards():
+	pass
+	
+	
+func check_players():
+	pass
 
 
 func check():
@@ -11,6 +19,6 @@ func check():
 		if card is CreatureCard:
 			
 			if card.status.current_health < 0:
-				GameContext.event_system.add_to_queue(DestroyEvent.new(card))
+				DestroyEvent.new(card).emit()
 				
 	

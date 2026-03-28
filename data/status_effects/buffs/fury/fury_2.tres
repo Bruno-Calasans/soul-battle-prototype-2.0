@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="StatusEffectData" format=3 uid="uid://ciba6xmobwng"]
+
+[ext_resource type="Script" uid="uid://cd7mio2nocxw" path="res://core/systems/status_effect/status_effect_event_modifier_data.gd" id="1_etcqq"]
+[ext_resource type="Script" uid="uid://bq83nuwy6s5rm" path="res://core/systems/status_effect/rule_modifier.gd" id="2_hhwdu"]
+[ext_resource type="Script" uid="uid://c37ebfx5yxq2x" path="res://core/systems/status_effect/status_effect_data.gd" id="3_no8ir"]
+[ext_resource type="Script" uid="uid://cxioet8kp4ftu" path="res://core/systems/status_effect/status_effect_modifier_data.gd" id="4_xlflc"]
+[ext_resource type="Script" uid="uid://cmnk4u8oisihs" path="res://core/systems/status_effect/status_effect_trigger_data.gd" id="5_5h4k1"]
+
+[sub_resource type="Resource" id="Resource_84xsl"]
+script = ExtResource("4_xlflc")
+attribute = 1
+value = 2
+metadata/_custom_type_script = "uid://cxioet8kp4ftu"
+
+[resource]
+script = ExtResource("3_no8ir")
+id = "FURY I"
+duration = 2
+max_stacks = 1
+stats_modifiers = Array[ExtResource("4_xlflc")]([SubResource("Resource_84xsl")])
+metadata/_custom_type_script = "uid://c37ebfx5yxq2x"

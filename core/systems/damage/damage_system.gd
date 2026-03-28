@@ -12,5 +12,5 @@ func _init():
 
 func calculate_dmg(dmg_source: Card, dmg_target: Card, dmg_value: int, dmg_type: Enums.DMG_TYPE):
 	var dmg_context = DamageContext.new(dmg_source, dmg_target, dmg_value, dmg_type)
-	var final_damage = GameContext.dmg_pipeline.process(dmg_context)
+	var final_damage = dmg_pipeline.process(dmg_context)
 	return final_damage

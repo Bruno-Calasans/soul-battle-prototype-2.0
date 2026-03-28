@@ -1,25 +1,30 @@
-[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://bst6chwugsohe"]
+[gd_resource type="Resource" script_class="StatusEffectData" format=3 uid="uid://blmivke0f6me7"]
 
-[ext_resource type="Script" uid="uid://c37ebfx5yxq2x" path="res://core/systems/status_effect/status_effect_data.gd" id="1_bon52"]
-[ext_resource type="Script" uid="uid://cxioet8kp4ftu" path="res://core/systems/status_effect/status_effect_modifier_data.gd" id="1_ruqla"]
-[ext_resource type="Script" uid="uid://cmnk4u8oisihs" path="res://core/systems/status_effect/status_effect_trigger_data.gd" id="3_xw7u6"]
-[ext_resource type="Script" uid="uid://dx8na0bk4a5og" path="res://core/systems/action/action.gd" id="4_6uftm"]
-[ext_resource type="Script" uid="uid://b6vm6vgf60el5" path="res://data/actions/damage_action/damage_action_data.gd" id="5_n1jh8"]
+[ext_resource type="Script" uid="uid://cd7mio2nocxw" path="res://core/systems/status_effect/status_effect_event_modifier_data.gd" id="1_amj2w"]
+[ext_resource type="Script" uid="uid://bq83nuwy6s5rm" path="res://core/systems/status_effect/rule_modifier.gd" id="2_287aj"]
+[ext_resource type="Script" uid="uid://c37ebfx5yxq2x" path="res://core/systems/status_effect/status_effect_data.gd" id="3_xdhty"]
+[ext_resource type="Script" uid="uid://cxioet8kp4ftu" path="res://core/systems/status_effect/status_effect_modifier_data.gd" id="4_2u470"]
+[ext_resource type="Script" uid="uid://cmnk4u8oisihs" path="res://core/systems/status_effect/status_effect_trigger_data.gd" id="5_lv6s0"]
+[ext_resource type="Script" uid="uid://coxxspsl728u1" path="res://core/systems/action/action_data.gd" id="6_2u470"]
+[ext_resource type="Script" uid="uid://b6vm6vgf60el5" path="res://data/actions/damage_action/damage_action_data.gd" id="7_lv6s0"]
+[ext_resource type="Script" uid="uid://bpwh0ayp0l0p2" path="res://core/systems/effect/filter/effect_filter.gd" id="8_0t2mj"]
 
-[sub_resource type="Resource" id="Resource_6uftm"]
-script = ExtResource("5_n1jh8")
+[sub_resource type="Resource" id="Resource_k1gyx"]
+script = ExtResource("7_lv6s0")
 value = 1
 metadata/_custom_type_script = "uid://b6vm6vgf60el5"
 
-[sub_resource type="Resource" id="Resource_xw7u6"]
-script = ExtResource("3_xw7u6")
+[sub_resource type="Resource" id="Resource_nlhua"]
+script = ExtResource("5_lv6s0")
 event = 3
-actions = Array[ExtResource("4_6uftm")]([SubResource("Resource_6uftm")])
+actions = Array[ExtResource("6_2u470")]([SubResource("Resource_k1gyx")])
 metadata/_custom_type_script = "uid://cmnk4u8oisihs"
 
 [resource]
-script = ExtResource("1_bon52")
-id = "Bleed I"
-duration = 1
-triggers = Array[ExtResource("3_xw7u6")]([SubResource("Resource_xw7u6")])
+script = ExtResource("3_xdhty")
+id = "BLEED 1"
+type = 1
+duration = 2
+max_stacks = 1
+triggers = Array[ExtResource("5_lv6s0")]([SubResource("Resource_nlhua")])
 metadata/_custom_type_script = "uid://c37ebfx5yxq2x"

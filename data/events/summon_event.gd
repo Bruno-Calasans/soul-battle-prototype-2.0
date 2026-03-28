@@ -3,13 +3,13 @@ extends GameEvent
 class_name SummonEvent
 
 func _init(
-	_source: Variant, 
-	_target: CreatureCard,
-	slot = BoardSlot 
+	summoner: Variant, 
+	summoned_card: CreatureCard,
+	slot: BoardSlot 
 	) -> void:
 	type = Enums.GAME_EVENT.SUMMON
-	source = _source
-	target = _target
+	source = summoner
+	target = summoned_card
 	data = {
 		"slot": slot
 	}

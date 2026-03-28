@@ -2,15 +2,17 @@ extends Resource
 class_name StatusEffect
 
 var data: StatusEffectData
-var source: CreatureCard
+var source: Card
 var target: CreatureCard
 var remaining_turns: int
+var stacks: int
 
-func _init(_effect_data: StatusEffectData, _source: Card, _target: Card ) -> void:
-	data = _effect_data
-	source = _source
-	target = _target
+func _init(effect_data: StatusEffectData, effect_source: Card, effect_target: Card ) -> void:
+	data = effect_data
+	source = effect_source
+	target = effect_target
 	remaining_turns = data.duration
+	stacks = effect_data.max_stacks
 
 
 func has_triggers():
@@ -18,15 +20,15 @@ func has_triggers():
 	
 	
 func has_stats_modifiers():
-	return data.modifiers.size() > 0
+	return data.stats_modifiers.size() > 0
 	
 	
 func has_event_modifiers():
 	return data.event_modifiers.size() > 0
 
 	
-func has_tag_rules():
-	return data.tag_rules.size() > 0
+func has_rule_modifiers():
+	return data.rule_modifiers.size() > 0
 
 
 func is_expired():
@@ -35,3 +37,8 @@ func is_expired():
 
 func decrease_duration():
 	remaining_turns = max(0, remaining_turns - 1)
+
+
+	
+	
+	

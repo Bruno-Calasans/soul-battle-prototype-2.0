@@ -3,9 +3,9 @@ class_name SummonActionData
 
 @export var card_data: CreatureCardData
 
-func _init(_card_data: CreatureCardData) -> void:
-	card_data = _card_data
+func _init(summoned_card_data: CreatureCardData) -> void:
+	card_data = summoned_card_data
 	
 		
-func to_action(source: Variant, target: Variant = null) -> Action:
-	return SummonAction.new(self, source, target)
+func to_action(summoner: Variant, summoned_card: Variant = null) -> Action:
+	return SummonAction.new(self, summoner, summoned_card)

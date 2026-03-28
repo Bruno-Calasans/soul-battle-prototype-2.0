@@ -1,12 +1,19 @@
-[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://cuk4gqq6k36vj"]
+[gd_resource type="Resource" script_class="StatusEffectData" format=3 uid="uid://cuk4gqq6k36vj"]
 
-[ext_resource type="Script" uid="uid://cxioet8kp4ftu" path="res://core/systems/status_effect/status_effect_modifier_data.gd" id="1_j0inq"]
-[ext_resource type="Script" uid="uid://c37ebfx5yxq2x" path="res://core/systems/status_effect/status_effect_data.gd" id="2_fuqdi"]
-[ext_resource type="Script" uid="uid://cmnk4u8oisihs" path="res://core/systems/status_effect/status_effect_trigger_data.gd" id="3_jqhi7"]
+[ext_resource type="Script" uid="uid://cd7mio2nocxw" path="res://core/systems/status_effect/status_effect_event_modifier_data.gd" id="1_jqhi7"]
+[ext_resource type="Script" uid="uid://bq83nuwy6s5rm" path="res://core/systems/status_effect/rule_modifier.gd" id="2_jlreq"]
+[ext_resource type="Script" uid="uid://ctwtnwk3piepw" path="res://data/status_effects/rule_modifiers/cannot_attack.gd" id="3_jlreq"]
+[ext_resource type="Script" uid="uid://c37ebfx5yxq2x" path="res://core/systems/status_effect/status_effect_data.gd" id="3_pp43a"]
+[ext_resource type="Script" uid="uid://cxioet8kp4ftu" path="res://core/systems/status_effect/status_effect_modifier_data.gd" id="4_lmnfe"]
+[ext_resource type="Script" uid="uid://cmnk4u8oisihs" path="res://core/systems/status_effect/status_effect_trigger_data.gd" id="5_b16p8"]
+
+[sub_resource type="Resource" id="Resource_pp43a"]
+script = ExtResource("3_jlreq")
+metadata/_custom_type_script = "uid://ctwtnwk3piepw"
 
 [resource]
-script = ExtResource("2_fuqdi")
-id = "Stun"
-duration = 1
-tag_rules = Array[int]([0])
+script = ExtResource("3_pp43a")
+id = "STUN"
+duration = 2
+rule_modifiers = Array[ExtResource("2_jlreq")]([SubResource("Resource_pp43a")])
 metadata/_custom_type_script = "uid://c37ebfx5yxq2x"

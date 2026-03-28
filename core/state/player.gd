@@ -16,10 +16,10 @@ func _init() -> void:
 	player_void = Void.new()
 	
 
+func has_energy(action_energy: int):
+	return energy >= action_energy
 
-func has_energy(energy_to_action: int):
-	return energy >= energy_to_action
 
-
-func consume_energy(value: int):
-	energy = clamp(energy - value, Limits.MIN_ENERGY, Limits.MAX_ENERGY)
+func consume_energy(action_energy: int):
+	if not has_energy(action_energy): return
+	energy = clamp(energy - action_energy, Limits.MIN_ENERGY, Limits.MAX_ENERGY)

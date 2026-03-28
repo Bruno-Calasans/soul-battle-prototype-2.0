@@ -1,19 +1,18 @@
 extends Resource
 class_name TurnSystem
 
-func change_turn():
-	GameContext.state.turn_number += 1
-	GameContext.state.turn_player = get_next_player()
-
 
 func start_turn():
-	change_turn()
-	GameContext.event_system.add_to_queue(TurnStartEvent.new())
+	var current_player = GameContext.state.turn_player
+	TurnStartEvent.new(current_player).emit()
 	
 	
 func end_turn():
-	change_turn()
-	GameContext.event_system.add_to_queue(TurnEndEvent.new())
+	var previous_player = GameContext.state.turn_player
+	GameContext.state.turn_number += 1
+	GameContext.state.turn_player = get_next_player()
+	TurnEndEvent.new(previous_player).emit()
+	
 	
 	
 # determinar qual o próximo jogador para o próximo turno
@@ -24,6 +23,7 @@ func get_next_player():
 	var next_index = current_player_index + 1
 	var next_player: Player
 	
+	# pega último player
 	if next_index > players.size() - 1:
 		next_player = players[0]
 	else:

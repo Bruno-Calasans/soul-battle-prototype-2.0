@@ -27,5 +27,5 @@ func _init() -> void:
 	command_system = CommandSystem.new()
 	action_system = ActionSystem.new()
 	effect_system = EffectSystem.new()
-	dmg_system = DamageSystem.new()
+	damage_system = DamageSystem.new()
 	status_effect_system = StatusEffectSystem.new()

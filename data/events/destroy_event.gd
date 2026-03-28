@@ -1,7 +1,7 @@
 extends GameEvent
 class_name DestroyEvent
 
-func _init(_source: Card, _target: Card) -> void:
-	type = Enums.GAME_EVENT_TYPE.DESTROY
-	source = _source
-	target = _target
+func _init(destroyer: Card, destroyed: Card) -> void:
+	type = Enums.GAME_EVENT.DESTROY
+	source = destroyer
+	target = destroyed

@@ -22,4 +22,6 @@ func process():
 	while has_events():
 		var event = get_next()
 		print("Evento: " + event.get_script().get_global_name())
+		GameContext.status_effect_system.process(event)
 		GameContext.effect_system.process(event)
+		
