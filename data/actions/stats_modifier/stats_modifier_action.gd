@@ -1,12 +1,12 @@
 extends Action
 class_name StatsModifierAction
 
-func _init(_modifier_data: StatsModifierActionData,  _source: Card, _target: CreatureCard,) -> void:
-	data = _modifier_data
-	source = _source
-	target = _target
+func _init(stats_modifier_source: Card, stats_modified_target: CreatureCard, modifier_data: StatsModifierActionData) -> void:
+	source = stats_modifier_source
+	target = stats_modified_target
+	data = modifier_data
 	
-
+	
 func can_execute() -> bool:
 	if target == null:
 		cancel("Target não encontrado")
@@ -18,7 +18,6 @@ func can_execute() -> bool:
 func execute():
 	var modifier_data: StatsModifierActionData = data
 	var value = modifier_data.value
-	
 	match modifier_data.operation:
 		
 		Enums.OPERATION.INCREASE:

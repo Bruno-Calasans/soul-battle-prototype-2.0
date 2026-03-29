@@ -7,7 +7,7 @@ var target: CreatureCard
 var remaining_turns: int
 var stacks: int
 
-func _init(effect_data: StatusEffectData, effect_source: Card, effect_target: Card ) -> void:
+func _init(effect_data: StatusEffectData, effect_source: GameEntity, effect_target: CreatureCard ) -> void:
 	data = effect_data
 	source = effect_source
 	target = effect_target

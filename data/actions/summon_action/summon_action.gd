@@ -3,11 +3,11 @@ class_name SummonAction
 
 func _init(
 	summon_action_data: CreatureCardData,
-	summoner: GameEntity,
+	summoner_source: GameEntity,
  	slot: BoardSlot = null,
 	) -> void:
 	type = Enums.ACTION_TYPE.SUMMON
-	source = summoner
+	source = summoner_source
 	data = {
 		"slot": slot,
 		"card_data": summon_action_data
@@ -15,10 +15,10 @@ func _init(
 	
 
 func can_execute() -> bool:
+	var validations: Array[ValidationResult] = []
 	var player: Player = source if source is Player else source.owner
 	var card_data: CreatureCardData = data.card_data 
 	var slot: BoardSlot = data.slot
-	var validations: Array[ValidationResult] = []
 	
 	if source is Player:
 		var player_validation = SummonRule.validate_player(source, card_data.cost)
@@ -44,14 +44,16 @@ func execute():
 	var card_data: CreatureCardData = data.card_data
 	var slot: BoardSlot = data.slot
 	var card: CreatureCard
+	var board: Board
 	
 	if source is Player:
 		card = card_data.to_card(source, source.hand)
+		board = source.board
 		source.consume_energy(card.get_cost())
-		GameContext.zone_system.move_card(card, source.board, slot)
 	
 	if source is Card:
-		card = card_data.to_card(source.owner, source.owner.board)
-		GameContext.zone_system.move_card(card, source.owner, slot)
+		board = source.owner.board
+		card = card_data.to_card(source.owner, board)
 		
+	GameContext.zone_system.move_card(card, board, slot)
 	SummonEvent.new(card, source, slot).emit()

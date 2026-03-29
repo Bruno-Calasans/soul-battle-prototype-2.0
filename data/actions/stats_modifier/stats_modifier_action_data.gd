@@ -6,5 +6,5 @@ class_name StatsModifierActionData
 @export var value: int
 
 	
-func to_action(source: Variant, target: Variant = null) -> Action:
-	return StatsModifierAction.new(self, source, target)
+func to_action(stats_modifier_source: GameEntity, stats_modified_target: GameEntity = null) -> Action:
+	return StatsModifierAction.new(stats_modifier_source, stats_modified_target, self)

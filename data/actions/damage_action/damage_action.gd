@@ -2,11 +2,11 @@ extends Action
 class_name DamageAction
 
 
-func _init(dmg_data: DamageActionData, dmg_source: Card, dmg_target: CreatureCard) -> void:
-	data = dmg_data
+func _init(dmg_source: GameEntity, dmg_target: CreatureCard, dmg_data: DamageActionData) -> void:
 	source = dmg_source
 	target = dmg_target
-
+	data = dmg_data
+	
 
 func can_execute() -> bool:
 	var dmg_validation = DamageRule.validate(source, target)

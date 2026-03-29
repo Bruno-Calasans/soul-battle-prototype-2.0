@@ -6,3 +6,6 @@ func _init(current_player: Player):
 	data = {
 		"current_player": current_player
 	}
+	
+func show_log():
+	Utils.log_event("START TURN EVENT")

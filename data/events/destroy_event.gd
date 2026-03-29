@@ -15,4 +15,4 @@ func _init(
 	}
 
 func show_log():
-	Utils.log_event("{0} foi destruído".format([target.data.id]))
+	Utils.log_event("DESTROY EVENT: {0} foi destruído".format([target.data.id]))

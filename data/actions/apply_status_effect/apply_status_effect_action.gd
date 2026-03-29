@@ -15,19 +15,21 @@ func _init(
 func can_execute() -> bool:
 	var status_effect_data: StatusEffectData = data.status_effect_data
 	var validation := ApplyStatusEffectRule.validade(status_effect_data, target, source)
-	var rule_context := RuleContext.new(source, target, self)
-	RuleSystem.apply_rules(Enums.RULE_HOOK.BEFORE_APPLY_STATUS_EFFECT, rule_context)
 	
 	if not validation.ok:
 		cancel(validation.reason)
 		return false
 		
 		
+	var rule_context := RuleContext.new(source, target, self)
+	RuleSystem.apply_rules(Enums.RULE_HOOK.BEFORE_APPLY_STATUS_EFFECT, rule_context)
+		
 	if not rule_context.allowed or rule_context.canceled:
 		cancel(rule_context.reason)
 		return false
 		
 	return true
+
 
 func execute():
 	var status_effect_data: StatusEffectData = data.status_effect_data

@@ -70,10 +70,10 @@ func handle_triggers(status_effect: StatusEffect, event: GameEvent):
 		if not can_trigger(trigger, event): return
 		if trigger.actions.is_empty(): return
 		
-		print("Status effect ativado = ", status_effect.data.id)
+		Utils.show_value("Status effect ativado", status_effect.data.id)
 		
 		for action_data in trigger.actions:
-			var action = action_data.to_action(status_effect.target, status_effect.target)
+			var action = action_data.to_action(status_effect.source, status_effect.target)
 			GameContext.action_system.add_to_queue(action)
 		
 

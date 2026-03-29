@@ -1,12 +1,14 @@
+# dmg_source = player (ainda não sei) ou card
+# dmg_target = creature, player or structure
+
 extends GameEvent
 class_name DamageEvent
 
-func _init(dmg_source: Card, damaged_card: Card, dmg_data: DamageActionData) -> void:
+func _init(dmg_source: GameEntity, dmg_target: GameEntity, dmg_data: DamageActionData) -> void:
 	type = Enums.GAME_EVENT.DAMAGE
 	source = dmg_source
-	target = damaged_card
+	target = dmg_target
 	data = dmg_data
-	
 	
 	
 func show_log():

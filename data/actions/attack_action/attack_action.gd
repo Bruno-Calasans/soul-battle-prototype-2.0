@@ -40,7 +40,7 @@ func execute():
 	dmg_data.type = attacker.data.dmg_type
 	
 	# adiciona à fila
-	var dmg_action = DamageAction.new(dmg_data, source, target)
+	var dmg_action = DamageAction.new(source, target, dmg_data)
 	GameContext.action_system.add_to_queue(dmg_action)
 	
 	# emit evento
