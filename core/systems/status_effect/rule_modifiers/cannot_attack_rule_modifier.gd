@@ -1,9 +1,13 @@
 extends RuleModifier
-class_name CannotAttack
+class_name CannotAttackRuleModifier
 
 
 func _init() -> void:
 	hook = Enums.RULE_HOOK.BEFORE_ATTACK
+	
+	
+func get_hook():
+	return Enums.RULE_HOOK.BEFORE_ATTACK
 	
 	
 func can_apply(context: RuleContext) -> bool:
@@ -23,4 +27,4 @@ func can_apply(context: RuleContext) -> bool:
 	
 	
 func apply(context: RuleContext) -> void:
-	context.deny()
+	context.deny("Não pode atacar")

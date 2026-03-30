@@ -10,6 +10,9 @@ static func validate(source: GameEntity, target: GameEntity) -> ValidationResult
 	if target == null:
 		validation.fail("Target não encontrado")
 		
+	if target == source:
+		validation.fail("Não pode atacar a si mesmo")
+		
 	return validation
 		
 		

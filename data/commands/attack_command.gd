@@ -13,14 +13,7 @@ func can_execute() -> bool:
 	if not atk_validation.ok:
 		reject(atk_validation.reason)
 		return false
-	
-	var context: RuleContext = RuleContext.new(source, target)
-	RuleSystem.apply_rules(Enums.RULE_HOOK.BEFORE_ATTACK, context)
-	
-	if context.canceled or not context.allowed:
-		reject(context.reason)
-		return false
-	
+
 	return true
 	
 	

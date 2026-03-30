@@ -18,8 +18,8 @@ func execute():
 	pass
 	
 	
-func cancel(_reason: String = ""):
+func cancel(cancel_reason: String = ""):
 	is_cancelled = true
-	reason = reason
+	reason = cancel_reason
 	CancelActionEvent.new(self, reason).emit()
 	

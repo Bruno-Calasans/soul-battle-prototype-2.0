@@ -15,13 +15,15 @@ func _init(source_ctx: GameEntity, target_ctx: GameEntity, action_ctx: Action = 
 	action = action_ctx
 
 
-func deny():
+func deny(deny_reason: String = ""):
 	allowed = false
 	canceled = false
+	reason = deny_reason
 	
 	
-func cancel():
+func cancel(cancel_reason: String = ""):
 	canceled = true
+	reason = cancel_reason
 	
 	
 func modify_value():

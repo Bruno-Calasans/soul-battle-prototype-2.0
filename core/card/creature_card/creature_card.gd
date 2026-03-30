@@ -83,23 +83,18 @@ func get_stats_modifiers(stat: Enums.ATTRIBUTE) -> Array[StatusEffectModifierDat
 func get_all_rule_modifiers():
 	var modifiers: Array[RuleModifier] = []
 	for status_effect in status_effects:
-		if not status_effect.has_rule_modifiers():
-			continue
+		if not status_effect.has_rule_modifiers(): continue
 		modifiers.append_array(status_effect.data.rule_modifiers)
 		
 	return modifiers
 		
 		
 func has_rule_modifier(rule_modifier: RuleModifier):
-	
 	for status_effect in status_effects:
-		if not status_effect.has_rule_modifiers():
-			continue
+		if status_effect.has_rule_modifier(rule_modifier):
+			return true
 			
-		if not status_effect.data.rule_modifiers.find(rule_modifier):
-			return false
-			
-	return true
+	return false
 	
 	
 func add_status_effect(status_effect: StatusEffect):

@@ -24,5 +24,3 @@ func process():
 		event.show_log()
 		GameContext.status_effect_system.process(event)
 		GameContext.effect_system.process(event)
-
-		

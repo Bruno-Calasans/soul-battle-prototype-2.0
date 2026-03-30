@@ -2,7 +2,7 @@ extends Resource
 class_name RuleSystem
 
 static func apply_rules(hook: Enums.RULE_HOOK, context: RuleContext):
-	var rules := collect_all_rule_modifiers()
+	var rules: Array[RuleModifier] = collect_all_rule_modifiers()
 	
 	for rule in rules:
 		

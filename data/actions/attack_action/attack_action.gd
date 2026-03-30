@@ -17,16 +17,16 @@ func _init(attacker: CreatureCard, attacked: GameEntity) -> void:
 	
 
 func can_execute() -> bool:
-	var attack_validation := AttackRule.validate(source, target)
-	if not attack_validation.ok:
-		cancel(attack_validation.reason)
+	var atk_validation: ValidationResult = AttackRule.validate(source, target)
+	var rule_ctx: RuleContext = RuleContext.new(source, target, self)
+	RuleSystem.apply_rules(Enums.RULE_HOOK.BEFORE_ATTACK, rule_ctx)
+	
+	if not atk_validation.ok:
+		cancel(atk_validation.reason)
 		return false
-	
-	var context: RuleContext = RuleContext.new(source, target, self)
-	RuleSystem.apply_rules(Enums.RULE_HOOK.BEFORE_ATTACK, context)
-	
-	if context.canceled or not context.allowed:
-		cancel(context.reason)
+		
+	if rule_ctx.canceled or not rule_ctx.allowed:
+		cancel(rule_ctx.reason)
 		return false
 	
 	return true
@@ -35,7 +35,7 @@ func can_execute() -> bool:
 func execute():
 	# cria dados do dano
 	var attacker: CreatureCard = source
-	var dmg_data := DamageActionData.new()
+	var dmg_data: DamageActionData = DamageActionData.new()
 	dmg_data.value = attacker.get_current_atk()
 	dmg_data.type = attacker.data.dmg_type
 	

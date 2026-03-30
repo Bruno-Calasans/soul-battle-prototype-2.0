@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CannotAttackRuleModifier" format=3 uid="uid://6s54honit8ld"]
+
+[ext_resource type="Script" uid="uid://ctwtnwk3piepw" path="res://core/systems/status_effect/rule_modifiers/cannot_attack_rule_modifier.gd" id="1_le8sq"]
+
+[resource]
+script = ExtResource("1_le8sq")
+hook = 2
+metadata/_custom_type_script = "uid://ctwtnwk3piepw"

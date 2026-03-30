@@ -39,6 +39,9 @@ func decrease_duration():
 	remaining_turns = max(0, remaining_turns - 1)
 
 
+func has_rule_modifier(rule_modifier: RuleModifier) -> bool:
+	if not has_rule_modifiers(): return false
+	return data.rule_modifiers.has(rule_modifier)
 	
 	
 	
