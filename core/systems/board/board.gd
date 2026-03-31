@@ -29,7 +29,7 @@ func get_empty_slots() -> Array[BoardSlot]:
 	return empty_slots
 
 
-func get_slot(slot_position: Enums.SLOT_POSITION) -> BoardSlot:
+func get_slot(slot_position: ZONE_ENUM.SLOT_POSITION) -> BoardSlot:
 	var found_slot: BoardSlot
 	
 	for slot in slots:

@@ -1,7 +1,7 @@
 extends Resource
 class_name GameEvent
 
-var type: Enums.GAME_EVENT
+var type: GAME_ENUM.GAME_EVENT
 var source: GameEntity # quem iniciou o evento
 var target: GameEntity # quem vai sofreu ação do evento
 var data: Variant

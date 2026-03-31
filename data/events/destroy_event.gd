@@ -5,9 +5,9 @@ class_name DestroyEvent
 func _init(
 	destroyer: Card, 
 	destroyed: Card = null, 
-	cause: DestroyCauseEnum.DESTROY_CAUSE = DestroyCauseEnum.DESTROY_CAUSE.COMBAT
+	cause: GAME_ENUM.DESTROY_CAUSE = GAME_ENUM.DESTROY_CAUSE.COMBAT
 	) -> void:
-	type = Enums.GAME_EVENT.DESTROY
+	type = GAME_ENUM.GAME_EVENT.DESTROY
 	source = destroyer
 	target = destroyed
 	data = {

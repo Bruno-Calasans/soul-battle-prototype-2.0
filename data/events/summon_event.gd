@@ -7,7 +7,7 @@ func _init(
 	summoner: GameEntity, 
 	slot: BoardSlot 
 	) -> void:
-	type = Enums.GAME_EVENT.SUMMON
+	type = GAME_ENUM.GAME_EVENT.SUMMON
 	source = summoner
 	target = summoned_card
 	data = {

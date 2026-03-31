@@ -1,9 +1,6 @@
 extends Resource
 class_name StateBasedSystem
 
-const DESTROY_CAUSE = DestroyCauseEnum.DESTROY_CAUSE 
-
-
 func check_cards():
 	Utils.log_warn("Verificando cards")
 	var cards := GameContext.state.get_all_board_cards()
@@ -16,7 +13,6 @@ func check_cards():
 			
 		# if card is StructureCard
 			
-	
 	
 func check_players():
 	pass

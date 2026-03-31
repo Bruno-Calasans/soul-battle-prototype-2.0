@@ -6,7 +6,7 @@ func _init(
 	summoner_source: GameEntity,
  	slot: BoardSlot = null,
 	) -> void:
-	type = Enums.ACTION_TYPE.SUMMON
+	type = GAME_ENUM.ACTION_TYPE.SUMMON
 	source = summoner_source
 	data = {
 		"slot": slot,

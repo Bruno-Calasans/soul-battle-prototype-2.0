@@ -1,7 +1,7 @@
 extends Resource
 class_name Zone
 
-var type: Enums.ZONE_TYPE
+var type: ZONE_ENUM.ZONE_TYPE
 var owner: Player
 var cards: Array[Card] = []
 

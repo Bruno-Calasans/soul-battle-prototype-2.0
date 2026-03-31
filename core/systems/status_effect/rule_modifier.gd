@@ -1,7 +1,7 @@
 extends Resource
 class_name RuleModifier
 
-@export var hook: Enums.RULE_HOOK
+@export var hook: GAME_ENUM.RULE_HOOK
 @export var priority: int = 0
 
 

@@ -3,7 +3,7 @@ class_name ApplyStatusEffectEvent
 
 
 func _init(status_effect: StatusEffect):
-	type = Enums.GAME_EVENT.APPLY_STATUS_EFFECT
+	type = GAME_ENUM.GAME_EVENT.APPLY_STATUS_EFFECT
 	source = status_effect.source
 	target = status_effect.target
 	data = {

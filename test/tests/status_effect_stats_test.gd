@@ -26,7 +26,9 @@ static func run():
 	GameContext.action_system.process()
 	GameContext.event_system.process()
 	
-	var stats_modifiers := warrior.get_stats_modifiers(Enums.ATTRIBUTE.ATTACK).map(func(stats): return stats.value)
+	var stats_modifiers := warrior.get_stats_modifiers(
+		STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.ATTACK
+		).map(func(stats): return stats.value)
 	Utils.log_info(stats_modifiers)
 	
 		# verificando status effects depois de afetarem stats

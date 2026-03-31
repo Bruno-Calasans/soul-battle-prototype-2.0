@@ -5,7 +5,7 @@ class_name DestroyAction
 func _init(
 	destroyed: Card, 
 	destroyer: Card = null, 
-	cause: DestroyCauseEnum.DESTROY_CAUSE = DestroyCauseEnum.DESTROY_CAUSE.COMBAT
+	cause: GAME_ENUM.DESTROY_CAUSE = GAME_ENUM.DESTROY_CAUSE.COMBAT
 	) -> void:
 	source = destroyer
 	target = destroyed
@@ -17,7 +17,7 @@ func _init(
 func can_execute() -> bool:
 	var destroy_validation := DestroyRule.validade(target)
 	var rule_context := RuleContext.new(source, target, self)
-	RuleSystem.apply_rules(Enums.RULE_HOOK.BEFORE_DESTROY, rule_context)
+	RuleSystem.apply_rules(GAME_ENUM.RULE_HOOK.BEFORE_DESTROY, rule_context)
 	
 	if not destroy_validation.ok:
 		cancel(destroy_validation.reason)

@@ -2,9 +2,9 @@ extends CardData
 class_name CreatureCardData
 
 # info
-@export var race: Enums.CREATURE_RACE
-@export var class_type: Enums.CREATURE_CLASS
-@export var dmg_type: Enums.DMG_TYPE
+@export var race: CARD_ENUM.CREATURE_RACE
+@export var class_type: CARD_ENUM.CREATURE_CLASS
+@export var dmg_type: CARD_ENUM.DMG_TYPE
 @export var souls: int
 
 # base status

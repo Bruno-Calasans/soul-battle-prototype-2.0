@@ -32,24 +32,24 @@ func handle_event(status_effect: StatusEffect, event: GameEvent):
 		var value = event_modifier.value
 		
 		match status_effect.event_field:
-			Enums.EVENT_FIELD.TARGET:
+			STATUS_EFFECT_ENUM.EVENT_FIELD.TARGET:
 				if not event.get("target"): return
 				
-			Enums.EVENT_FIELD.SOURCE:
+			STATUS_EFFECT_ENUM.EVENT_FIELD.SOURCE:
 				if not event.get("source"): return
 				
-			Enums.EVENT_FIELD.VALUE:
+			STATUS_EFFECT_ENUM.EVENT_FIELD.VALUE:
 				if event.get("data") and not event.data.get("value"): return
 		
 		match status_effect.operation:
-			Enums.OPERATION.SET:
-				if event_field == Enums.EVENT_FIELD.TARGET:
+			STATUS_EFFECT_ENUM.OPERATION.SET:
+				if event_field == STATUS_EFFECT_ENUM.EVENT_FIELD.TARGET:
 					event.target = value
 					
-				if event_field == Enums.EVENT_FIELD.SOURCE:
+				if event_field == STATUS_EFFECT_ENUM.EVENT_FIELD.SOURCE:
 					event.source = value
 			
-				if event_field == Enums.EVENT_FIELD.VALUE:
+				if event_field == STATUS_EFFECT_ENUM.EVENT_FIELD.VALUE:
 						event.data.value = value
 
 

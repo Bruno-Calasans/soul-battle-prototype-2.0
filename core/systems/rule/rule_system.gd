@@ -1,7 +1,7 @@
 extends Resource
 class_name RuleSystem
 
-static func apply_rules(hook: Enums.RULE_HOOK, context: RuleContext):
+static func apply_rules(hook: GAME_ENUM.RULE_HOOK, context: RuleContext):
 	var rules: Array[RuleModifier] = collect_all_rule_modifiers()
 	
 	for rule in rules:

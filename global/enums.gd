@@ -156,6 +156,8 @@ enum ACTION_TYPE {
 enum COMMAND_TYPE {
 	ATTACK,
 	SUMMON,
+	ACTIVE_EFFECT,
+	MOVE_CREATURE,
 }
 
 enum GAME_EVENT {
@@ -189,25 +191,12 @@ enum ZONE_TYPE {
 	BOARD
 }
 
-enum RULE_MODIFIER {
-	NO_ATTACK,
-	NO_HEAL,
-	NO_TARGET
-}
-
 enum EVENT_FIELD {
 	TARGET, # fora de event.data
 	SOURCE, # fota de event.data
 	VALUE, # dentro de event.data
 	DMG_TYPE, # dentro de event.data
 	SLOT # dentro de event.data
-}
-
-
-enum STATUS_EFFECT_COMPONENT {
-	TRIGGER, # REAGE À EVENTOS
-	MODIFIER, # MODIFICA STATUS DO CARD
-	RULE_CHANGE # MUDA REGRAS. EX.: NÃO ATACAR, NÃO ATIVAR HABILIDADE
 }
 
 enum SLOT_POSITION {

@@ -2,7 +2,7 @@ extends GameCommand
 class_name AttackCommand
 
 func _init(attacker: Card, attacked: Card) -> void:
-	type = Enums.COMMAND_TYPE.ATTACK
+	type = GAME_ENUM.COMMAND_TYPE.ATTACK
 	source = attacker
 	target = attacked
 

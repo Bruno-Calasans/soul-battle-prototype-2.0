@@ -2,7 +2,7 @@ extends GameEvent
 class_name AttackEvent
 
 func _init(attacker: CreatureCard, attacked: CreatureCard) -> void:
-	type = Enums.GAME_EVENT.ATTACK
+	type = GAME_ENUM.GAME_EVENT.ATTACK
 	source = attacker
 	target = attacked
 

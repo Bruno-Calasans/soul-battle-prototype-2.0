@@ -16,36 +16,36 @@ static func match_filters(subject: Variant, filters: Array[EffectFilter]):
 	
 	
 # pega o valor da propriedade a ser verificada
-static func get_field_value(subject: Variant, field: Enums.FILTER_FIELD) -> Variant:
+static func get_field_value(subject: Variant, field: EFFECT_ENUM.FILTER_FIELD) -> Variant:
 	if subject is CreatureCard:
 		match field:
-			Enums.FILTER_FIELD.ATTACK:
+			EFFECT_ENUM.FILTER_FIELD.ATTACK:
 				return subject.current_atk
 			
-			Enums.FILTER_FIELD.HEALTH:
+			EFFECT_ENUM.FILTER_FIELD.HEALTH:
 				return subject.current_health
 				
-			Enums.FILTER_FIELD.DEF:
+			EFFECT_ENUM.FILTER_FIELD.DEF:
 				return subject.current_def
 				
-			Enums.FILTER_FIELD.EVADE:
+			EFFECT_ENUM.FILTER_FIELD.EVADE:
 				return subject.current_evade
 			
-			Enums.FILTER_FIELD.CLASS:
+			EFFECT_ENUM.FILTER_FIELD.CLASS:
 				return subject.data.class_type
 			
-			Enums.FILTER_FIELD.RACE:
+			EFFECT_ENUM.FILTER_FIELD.RACE:
 				return subject.data.race
 			
-			Enums.FILTER_FIELD.OWNER:
+			EFFECT_ENUM.FILTER_FIELD.OWNER:
 				return subject.owner
 				
-			Enums.FILTER_FIELD.SOUL:
+			EFFECT_ENUM.FILTER_FIELD.SOUL:
 				return subject.data.soul
 				
 	if subject is GameEvent:
 		match field:
-			Enums.FILTER_FIELD.SOURCE:
+			EFFECT_ENUM.FILTER_FIELD.SOURCE:
 				return subject.source
 		
 		
@@ -53,37 +53,37 @@ static func get_field_value(subject: Variant, field: Enums.FILTER_FIELD) -> Vari
 	
 	
 # compara o valor da entidade com o valor desejado
-static func check_value(operation: Enums.COMPARATOR, search_value: Variant, current_value: Variant):
+static func check_value(operation: EFFECT_ENUM.COMPARATOR, search_value: Variant, current_value: Variant):
 	match operation:
 		
-		Enums.COMPARATOR.EQUALS_TO: 
+		EFFECT_ENUM.COMPARATOR.EQUALS_TO: 
 			return current_value == search_value
 			
-		Enums.COMPARATOR.NOT_EQUALS_TO: 
+		EFFECT_ENUM.COMPARATOR.NOT_EQUALS_TO: 
 			return current_value != search_value
 		
-		Enums.COMPARATOR.ABOVE_TO: 
+		EFFECT_ENUM.COMPARATOR.ABOVE_TO: 
 			return current_value > search_value
 			
-		Enums.COMPARATOR.BELOW_TO: 
+		EFFECT_ENUM.COMPARATOR.BELOW_TO: 
 			return current_value < search_value
 			
-		Enums.COMPARATOR.ABOVE_OR_EQUALS_TO:
+		EFFECT_ENUM.COMPARATOR.ABOVE_OR_EQUALS_TO:
 			return current_value >= search_value
 			
-		Enums.COMPARATOR.BELOW_OR_EQUALS_TO: 
+		EFFECT_ENUM.COMPARATOR.BELOW_OR_EQUALS_TO: 
 			return current_value <= search_value
 		
-		Enums.COMPARATOR.CONTAINS:
+		EFFECT_ENUM.COMPARATOR.CONTAINS:
 			return search_value in current_value
 		
-		Enums.COMPARATOR.NOT_CONTAINS:
+		EFFECT_ENUM.COMPARATOR.NOT_CONTAINS:
 			return not (search_value in current_value)
 	
 	return false
 
 
-static func match_team(subject: Card, source: Variant, side: Enums.SIDE):
+static func match_team(subject: Card, source: Variant, side: EFFECT_ENUM.SIDE):
 	if source == null or subject == null:
 		return false
 		
@@ -91,16 +91,16 @@ static func match_team(subject: Card, source: Variant, side: Enums.SIDE):
 	var source_owner = source if source is Player else source.owner
 	
 	match side:
-		Enums.SIDE.SELF:
+		EFFECT_ENUM.SIDE.SELF:
 			return subject.get_instance_id() == source.get_instance_id()
 		
-		Enums.SIDE.ALLY:
+		EFFECT_ENUM.SIDE.ALLY:
 			return subject_owner.get_instance_id() == source_owner.get_instance_id()
 			
-		Enums.SIDE.ENEMY:
+		EFFECT_ENUM.SIDE.ENEMY:
 			return subject_owner != source_owner
 			
-		Enums.SIDE.ANY:
+		EFFECT_ENUM.SIDE.ANY:
 			return true
 			
 	return false

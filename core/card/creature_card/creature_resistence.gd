@@ -1,9 +1,8 @@
 extends Resource
 class_name CreatureResistence
 
-const DMG_TYPE = Enums.DMG_TYPE
-
-var DMG_TYPE_NAMES = EnumNames.DMG_TYPE_NAMES
+const DMG_TYPE = CARD_ENUM.DMG_TYPE
+const DMG_TYPE_NAMES = CONSTANTS.DMG_TYPE_NAMES
 
 @export var resistences = {
 	"PHYSICAL": 0,

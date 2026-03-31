@@ -16,7 +16,7 @@ func can_execute() -> bool:
 	var status_effect_data: StatusEffectData = data.status_effect_data
 	var validation := ApplyStatusEffectRule.validade(status_effect_data, target, source)
 	var rule_context := RuleContext.new(source, target, self)
-	RuleSystem.apply_rules(Enums.RULE_HOOK.BEFORE_APPLY_STATUS_EFFECT, rule_context)
+	RuleSystem.apply_rules(GAME_ENUM.RULE_HOOK.BEFORE_APPLY_STATUS_EFFECT, rule_context)
 	
 	if not validation.ok:
 		cancel(validation.reason)

@@ -5,7 +5,7 @@ extends GameEvent
 class_name DamageEvent
 
 func _init(dmg_source: GameEntity, dmg_target: GameEntity, dmg_data: DamageActionData) -> void:
-	type = Enums.GAME_EVENT.DAMAGE
+	type = GAME_ENUM.GAME_EVENT.DAMAGE
 	source = dmg_source
 	target = dmg_target
 	data = dmg_data
@@ -13,4 +13,4 @@ func _init(dmg_source: GameEntity, dmg_target: GameEntity, dmg_data: DamageActio
 	
 func show_log():
 	Utils.log_event("DAMAGE EVENT: {0} recebeu {1} de dano ({2})"
-	.format([target.data.id, data.value, EnumNames.DMG_TYPE_NAMES[data.type], ], "{_}"))
+	.format([target.data.id, data.value, CONSTANTS.DMG_TYPE_NAMES[data.type], ], "{_}"))

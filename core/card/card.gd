@@ -19,11 +19,11 @@ func set_desc(_desc: String):
 	data.desc = _desc
 	
 	
-func set_type(_card_type: Enums.CARD_TYPE):
+func set_type(_card_type: CARD_ENUM.CARD_TYPE):
 	data.type = _card_type
 	
 
-func set_rarity(_rarity: Enums.CARD_RARITY):
+func set_rarity(_rarity: CARD_ENUM.CARD_RARITY):
 	data.rarity = _rarity
 	
 	

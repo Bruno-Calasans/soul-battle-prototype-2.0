@@ -38,13 +38,13 @@ func set_current_evade(evade: int):
 	current_evade = clamp(evade, Limits.MIN_EVADE, Limits.MAX_EVADE)
 
 
-func get_resistence(dmg_type: Enums.DMG_TYPE):
+func get_resistence(dmg_type: CARD_ENUM.DMG_TYPE):
 	return current_resistence.get_resistence(dmg_type)
 	
 
 func get_current_atk() -> int:
 	var atk: int = current_atk
-	var atk_modifiers := get_stats_modifiers(Enums.ATTRIBUTE.ATTACK)
+	var atk_modifiers := get_stats_modifiers(STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.ATTACK)
 	
 	for atk_modifier in atk_modifiers:
 		atk += atk_modifier.value 
@@ -54,7 +54,7 @@ func get_current_atk() -> int:
 
 func get_current_def() -> int:
 	var def: int = current_def
-	var def_modifiers := get_stats_modifiers(Enums.ATTRIBUTE.DEF)
+	var def_modifiers := get_stats_modifiers(STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.DEF)
 	
 	for deff_modifier in def_modifiers:
 		def += deff_modifier.value 
@@ -66,7 +66,7 @@ func take_damage(value: int):
 	set_current_health(current_health - value)
 
 
-func get_stats_modifiers(stat: Enums.ATTRIBUTE) -> Array[StatusEffectModifierData]:
+func get_stats_modifiers(stat: STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE) -> Array[StatusEffectModifierData]:
 	var found_modifiers: Array[StatusEffectModifierData] = []
 	
 	for effect in status_effects:

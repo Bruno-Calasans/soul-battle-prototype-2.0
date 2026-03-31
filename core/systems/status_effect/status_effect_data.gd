@@ -2,7 +2,7 @@ extends Resource
 class_name StatusEffectData
 
 @export var id: String
-@export var type: Enums.STATUS_EFFECT_TYPE
+@export var type: STATUS_EFFECT_ENUM.STATUS_EFFECT_TYPE
 @export var duration: int # -1 é infinita
 @export var max_stacks: int
 @export var triggers: Array[StatusEffectTriggerData] = []

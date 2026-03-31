@@ -16,13 +16,16 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EnumNames="*uid://csdy6qxgvbms7"
-Enums="*uid://cerq8yywlftkj"
+Enums="uid://cerq8yywlftkj"
 Limits="*uid://c48icj45dqwcm"
 Utils="*uid://d0x666jhti4fa"
 GameContext="*uid://b4tyjsmgkxy5"
-AttackTypeEnum="*uid://dxhuh08spxy0w"
-DestroyCauseEnum="*uid://dgyrwhvc24kq"
+CARD_ENUM="*uid://cndqo3s7xhagk"
+GAME_ENUM="*uid://buohrtmxybxx4"
+EFFECT_ENUM="*uid://c50d8ik0od5i0"
+STATUS_EFFECT_ENUM="*uid://dka1pr0ueu76i"
+ZONE_ENUM="*uid://je0br7xky4gx"
+CONSTANTS="*uid://c41ik3d2tag3v"
 
 [physics]
 

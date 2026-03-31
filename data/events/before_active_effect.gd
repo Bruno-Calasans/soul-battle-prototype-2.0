@@ -2,7 +2,7 @@ extends GameEvent
 class_name BeforeActiveEffectEvent
 
 func _init(effect: Effect) -> void:
-	type = Enums.GAME_EVENT.BEFORE_ACTIVE_EFFECT
+	type = GAME_ENUM.GAME_EVENT.BEFORE_ACTIVE_EFFECT
 	target = effect.target
 	source = effect.source
 	data = effect

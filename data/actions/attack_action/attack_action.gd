@@ -7,19 +7,19 @@ func _init(attacker: CreatureCard, attacked: GameEntity) -> void:
 	target = attacked
 	
 	if attacker is CreatureCard:
-		type = Enums.ACTION_TYPE.BATTLE_ATTACK
+		type = GAME_ENUM.ACTION_TYPE.BATTLE_ATTACK
 		
 	elif attacked is Player:
-		type = Enums.ACTION_TYPE.DIRECT_ATTACK
+		type = GAME_ENUM.ACTION_TYPE.DIRECT_ATTACK
 		
 	else:
-		type = Enums.ACTION_TYPE.DEMOLITION_ATTACK
+		type = GAME_ENUM.ACTION_TYPE.DEMOLITION_ATTACK
 	
 
 func can_execute() -> bool:
 	var atk_validation: ValidationResult = AttackRule.validate(source, target)
 	var rule_ctx: RuleContext = RuleContext.new(source, target, self)
-	RuleSystem.apply_rules(Enums.RULE_HOOK.BEFORE_ATTACK, rule_ctx)
+	RuleSystem.apply_rules(GAME_ENUM.RULE_HOOK.BEFORE_ATTACK, rule_ctx)
 	
 	if not atk_validation.ok:
 		cancel(atk_validation.reason)

@@ -1,8 +1,8 @@
 extends ActionData
 class_name StatsModifierActionData
 
-@export var attribute: Enums.ATTRIBUTE
-@export var operation: Enums.OPERATION
+@export var attribute: STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE
+@export var operation: STATUS_EFFECT_ENUM.OPERATION
 @export var value: int
 
 	

@@ -1,7 +1,7 @@
 extends Resource
 class_name GameCommand
 
-var type: Enums.COMMAND_TYPE
+var type: GAME_ENUM.COMMAND_TYPE
 var source: Variant # quem
 var target: Variant # o quê
 var data: Variant # como

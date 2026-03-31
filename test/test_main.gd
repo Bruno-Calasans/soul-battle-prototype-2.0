@@ -8,6 +8,6 @@ func _ready() -> void:
 	#SummonTest.run()
 	#StatusEffectStatsTest.run()
 	#StatusEffectTriggerTest.run()
-	StatusEffectRuleModifierTest.run()
-	#AttackTest.run()
+	#StatusEffectRuleModifierTest.run()
+	AttackTest.run()
 	

@@ -7,7 +7,7 @@ class_name SummonCardCommand
 # data = quem quer invoca (source), o que quer invocar (target), onde quer invocar (slot)
 
 func _init(card_data: CreatureCardData, summoner: GameEntity, slot: BoardSlot = null) -> void:
-	type = Enums.COMMAND_TYPE.SUMMON
+	type = GAME_ENUM.COMMAND_TYPE.SUMMON
 	source = summoner
 	data = {
 		"card_data": card_data,

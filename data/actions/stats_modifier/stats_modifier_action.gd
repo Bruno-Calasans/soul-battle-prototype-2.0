@@ -20,54 +20,54 @@ func execute():
 	var value = modifier_data.value
 	match modifier_data.operation:
 		
-		Enums.OPERATION.INCREASE:
+		STATUS_EFFECT_ENUM.OPERATION.INCREASE:
 			match data.attribute:
-				Enums.ATTRIBUTE.HP:
+				STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.HP:
 					var health = target.current_health + value
 					target.set_current_health(health)
 					
-				Enums.ATTRIBUTE.ATTACK:
+				STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.ATTACK:
 					var atk = target.current_atk + value
 					target.set_current_atk(atk)
 					
-				Enums.ATTRIBUTE.DEF:
+				STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.DEF:
 					var def = target.current_def + value
 					target.set_current_def(def)
 					
-				Enums.ATTRIBUTE.EVADE:
+				STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.EVADE:
 					var evade = target.current_evade + value
 					target.set_current_evade(evade)
 					
-		Enums.OPERATION.DECREASE:
+		STATUS_EFFECT_ENUM.OPERATION.DECREASE:
 			match data.attribute:
-				Enums.ATTRIBUTE.HP:
+				STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.HP:
 					var health = target.current_health - value
 					target.set_current_health(health)
 					
-				Enums.ATTRIBUTE.ATTACK:
+				STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.ATTACK:
 					var atk = target.current_atk - value
 					target.set_current_atk(atk)
 					
-				Enums.ATTRIBUTE.DEF:
+				STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.DEF:
 					var def = target.current_def - value
 					target.set_current_def(def)
 					
-				Enums.ATTRIBUTE.EVADE:
+				STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.EVADE:
 					var evade = target.current_evade - value
 					target.set_current_evade(evade)
 					
-		Enums.OPERATION.SET:
+		STATUS_EFFECT_ENUM.OPERATION.SET:
 			match data.attribute:
-				Enums.ATTRIBUTE.HP:
+				STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.HP:
 					target.set_current_health(value)
 					
-				Enums.ATTRIBUTE.ATTACK:
+				STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.ATTACK:
 					target.set_current_atk(value)
 					
-				Enums.ATTRIBUTE.DEF:
+				STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.DEF:
 					target.set_current_def(value)
 					
-				Enums.ATTRIBUTE.EVADE:
+				STATUS_EFFECT_ENUM.BUFFABLE_ATRIBUTE.EVADE:
 					target.set_current_evade(value)
 	
 	
