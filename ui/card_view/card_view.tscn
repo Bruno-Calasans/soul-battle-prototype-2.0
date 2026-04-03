@@ -1,0 +1,389 @@
+[gd_scene format=3 uid="uid://dbf7iefhk24np"]
+
+[ext_resource type="Theme" uid="uid://bl2gh7y8im17c" path="res://ui/themes/card_theme.tres" id="1_vwh3y"]
+[ext_resource type="Script" uid="uid://dt53paqxcejdc" path="res://ui/card_view/card_view.gd" id="2_fx0ar"]
+[ext_resource type="Shader" uid="uid://3vp3ellerq51" path="res://ui/shaders/round_texture.gdshader" id="3_5vvts"]
+[ext_resource type="Texture2D" uid="uid://5oxby23fgnup" path="res://assets/card/common-card.jpeg" id="4_w0tj2"]
+[ext_resource type="Texture2D" uid="uid://bh72pmk1icx06" path="res://assets/icons/rock.svg" id="5_cw2ka"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_br3k1"]
+shader = ExtResource("3_5vvts")
+shader_parameter/radius = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvkjp"]
+bg_color = Color(0.3882353, 0.3882353, 0.3882353, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24705882, 0.24705882, 0.24705882, 0.99607843)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16bs5"]
+bg_color = Color(0, 0, 0, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24705882, 0.24705882, 0.24705882, 0.99607843)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yas6e"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(15.302, 15.302, 15.302, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_br3k1"]
+bg_color = Color(0.3882353, 0.3882353, 0.3882353, 0.9490196)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24705882, 0.24705882, 0.24705882, 0.99607843)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3sge"]
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0.24705882, 0.24705882, 0.24705882, 0.99607843)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+corner_detail = 10
+
+[node name="CardView" type="Control" unique_id=1899333581]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 62.0
+offset_top = 254.0
+offset_right = 284.0
+offset_bottom = 624.0
+theme = ExtResource("1_vwh3y")
+theme_type_variation = &"Label"
+script = ExtResource("2_fx0ar")
+
+[node name="BackgroundPanel" type="Panel" parent="." unique_id=343381453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vwh3y")
+
+[node name="BackgroundMargin" type="MarginContainer" parent="BackgroundPanel" unique_id=526582765]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 5
+
+[node name="CardBackground" type="TextureRect" parent="BackgroundPanel/BackgroundMargin" unique_id=477195717]
+material = SubResource("ShaderMaterial_br3k1")
+layout_mode = 2
+texture = ExtResource("4_w0tj2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="NameMargin" type="MarginContainer" parent="." unique_id=1289090976]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 5.0
+offset_right = 214.0
+offset_bottom = 45.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="NamePanel" type="Panel" parent="NameMargin" unique_id=197771782]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wvkjp")
+
+[node name="CardName" type="RichTextLabel" parent="NameMargin/NamePanel" unique_id=250097695]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.512)
+theme_override_font_sizes/normal_font_size = 12
+text = "Monge, mocus"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescMargin" type="MarginContainer" parent="." unique_id=221647536]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.734
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.16799927
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="DescPanel" type="Panel" parent="DescMargin" unique_id=1937129206]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_16bs5")
+
+[node name="DescLabelMargin" type="MarginContainer" parent="DescMargin/DescPanel" unique_id=1377759260]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 5
+
+[node name="CardDesc" type="RichTextLabel" parent="DescMargin/DescPanel/DescLabelMargin" unique_id=1496703375]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
+text = "[b]Keywords[/b]: [u]Voador[/u], [u]Ataque Certeiro[/u]
+
+Habilidade passiva: Não pode ser alvo de efeito.
+
+Habilidade ativa (custo: 2 almas): Perca metade da vida, destrua um card no campo
+
+Habilidade Ultimato: Destrua todos os cards no campo, incluido este card.
+"
+scroll_following = true
+tab_size = 2
+context_menu_enabled = true
+
+[node name="CardCostPanel" type="Panel" parent="." unique_id=1206080107]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13900001
+anchor_top = 0.074
+anchor_right = 0.13900001
+anchor_bottom = 0.074
+offset_left = -0.005004883
+offset_top = -21.23
+offset_right = 29.994995
+offset_bottom = 8.77
+rotation = 0.7853982
+theme_override_styles/panel = SubResource("StyleBoxFlat_yas6e")
+
+[node name="CardCost" type="Label" parent="CardCostPanel" unique_id=47652523]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.7853982
+pivot_offset = Vector2(15, 15)
+theme_override_font_sizes/font_size = 14
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1595187506]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.74600005
+anchor_right = 0.5
+anchor_bottom = 0.74600005
+offset_left = -105.0
+offset_top = -8.02002
+offset_right = 105.0
+offset_bottom = 7.9799805
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TypeContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=107059476]
+custom_minimum_size = Vector2(40, 15)
+layout_mode = 2
+theme_override_constants/separation = -15
+alignment = 1
+
+[node name="CardType" type="Panel" parent="HBoxContainer/TypeContainer" unique_id=1867203171]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_br3k1")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/TypeContainer/CardType" unique_id=728832844]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 2
+
+[node name="CardType" type="Label" parent="HBoxContainer/TypeContainer/CardType/MarginContainer" unique_id=1415196989]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Fogo"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PanelIcon" type="Panel" parent="HBoxContainer/TypeContainer/CardType" unique_id=1428349514]
+z_index = 1
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -7.5
+offset_right = 15.0
+offset_bottom = 7.5
+grow_vertical = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3sge")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/TypeContainer/CardType/PanelIcon" unique_id=1271271087]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="CardTypeIcon" type="TextureRect" parent="HBoxContainer/TypeContainer/CardType/PanelIcon/MarginContainer" unique_id=1406482625]
+layout_mode = 2
+texture = ExtResource("5_cw2ka")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CardTags" type="Panel" parent="HBoxContainer" unique_id=1908030863]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_br3k1")
+metadata/_edit_use_anchors_ = true
+
+[node name="CardTagsMargin" type="MarginContainer" parent="HBoxContainer/CardTags" unique_id=1723477030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Tags" type="Label" parent="HBoxContainer/CardTags/CardTagsMargin" unique_id=1651860231]
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+text = "criatura · humano · divina"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SubtypeContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=549484419]
+custom_minimum_size = Vector2(40, 15)
+layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="CardSubtype" type="Panel" parent="HBoxContainer/SubtypeContainer" unique_id=1951417172]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_br3k1")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SubtypeContainer/CardSubtype" unique_id=627276359]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="CardSubtype" type="Label" parent="HBoxContainer/SubtypeContainer/CardSubtype/MarginContainer" unique_id=546674453]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Místico"
+vertical_alignment = 1
+
+[node name="PanelIcon" type="Panel" parent="HBoxContainer/SubtypeContainer/CardSubtype" unique_id=1672128363]
+z_index = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3sge")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/SubtypeContainer/CardSubtype/PanelIcon" unique_id=778888566]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="SubtypeIcon" type="TextureRect" parent="HBoxContainer/SubtypeContainer/CardSubtype/PanelIcon/MarginContainer" unique_id=3531079]
+layout_mode = 2
+texture = ExtResource("5_cw2ka")
+expand_mode = 1
+stretch_mode = 5

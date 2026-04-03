@@ -1,2 +1,0 @@
-extends CardView
-class_name CreatureCardView

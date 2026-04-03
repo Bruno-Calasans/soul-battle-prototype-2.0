@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://crdasj14yu66e"]
-
-[ext_resource type="PackedScene" uid="uid://c3n0dpjrny0la" path="res://ui/card/card_view.tscn" id="1_p8uol"]
-[ext_resource type="Script" uid="uid://ceg7wsr0vojp2" path="res://ui/creature/creature_card_view.gd" id="2_2l237"]
-
-[node name="CreatureCardView" unique_id=1975973532 instance=ExtResource("1_p8uol")]
-script = ExtResource("2_2l237")
