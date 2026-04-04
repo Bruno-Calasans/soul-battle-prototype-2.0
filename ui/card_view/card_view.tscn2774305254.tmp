@@ -81,7 +81,6 @@ offset_right = 111.0
 offset_bottom = 185.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -124,7 +123,6 @@ offset_left = 14.0
 offset_top = 5.0
 offset_right = 214.0
 offset_bottom = 45.0
-mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 5
@@ -159,7 +157,6 @@ offset_top = 0.16799927
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
-mouse_filter = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -210,7 +207,6 @@ offset_top = -21.23
 offset_right = 29.994995
 offset_bottom = 8.77
 rotation = 0.7853982
-mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yas6e")
 
 [node name="CardCost" type="Label" parent="CardCostPanel" unique_id=47652523]
@@ -246,7 +242,6 @@ offset_right = 105.0
 offset_bottom = 7.9799805
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme_override_constants/separation = 4
 alignment = 1
 
@@ -282,6 +277,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="PanelIcon" type="Panel" parent="HBoxContainer/TypeContainer/CardType" unique_id=1428349514]
+z_index = 1
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 1
 anchors_preset = 4
@@ -370,6 +366,7 @@ text = "Místico"
 vertical_alignment = 1
 
 [node name="PanelIcon" type="Panel" parent="HBoxContainer/SubtypeContainer/CardSubtype" unique_id=1672128363]
+z_index = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
 anchors_preset = 6
@@ -405,7 +402,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="CardArea2D" type="Area2D" parent="." unique_id=300064474]
-visible = false
 
 [node name="CardColisionShape2D" type="CollisionShape2D" parent="CardArea2D" unique_id=1000630885]
 position = Vector2(111, 185)

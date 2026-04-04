@@ -1,6 +1,43 @@
 [gd_scene format=3 uid="uid://cjvqkiilrxwbe"]
 
 [ext_resource type="Script" uid="uid://dv6vrr6gba3pw" path="res://test/test_main.gd" id="1_bysfv"]
+[ext_resource type="Script" uid="uid://c3bfmjixj5vqb" path="res://ui/systems/input_manager.gd" id="2_6wfr6"]
+[ext_resource type="Script" uid="uid://61ehqll6tga6" path="res://ui/systems/drag_manager.gd" id="2_41sfk"]
+[ext_resource type="PackedScene" uid="uid://dbf7iefhk24np" path="res://ui/card_view/card_view.tscn" id="2_r7p4q"]
+[ext_resource type="Script" uid="uid://dhrc2bw351a50" path="res://ui/systems/game_manager.gd" id="2_rcspk"]
+[ext_resource type="Script" uid="uid://dgwyclv0ab67w" path="res://ui/systems/highlight_manager.gd" id="5_8sksj"]
+[ext_resource type="Script" uid="uid://c6hubpyoig82p" path="res://ui/systems/entity_detector.gd" id="6_7eq76"]
 
 [node name="Teste" type="Node2D" unique_id=1595170362]
 script = ExtResource("1_bysfv")
+
+[node name="GameManager" type="Node2D" parent="." unique_id=1125694395]
+script = ExtResource("2_rcspk")
+
+[node name="HighlightManager" type="Node2D" parent="GameManager" unique_id=1161116916]
+script = ExtResource("5_8sksj")
+
+[node name="DragManager" type="Node2D" parent="GameManager" unique_id=622731907]
+script = ExtResource("2_41sfk")
+
+[node name="InputManager" type="Node2D" parent="GameManager" unique_id=820008449]
+script = ExtResource("2_6wfr6")
+
+[node name="EntityDetector" type="Node2D" parent="GameManager" unique_id=1551927131]
+script = ExtResource("6_7eq76")
+
+[node name="CardsContainer" type="Node2D" parent="." unique_id=508755458]
+
+[node name="CardView1" parent="CardsContainer" unique_id=1899333581 instance=ExtResource("2_r7p4q")]
+visible = false
+offset_left = 407.0
+offset_top = 163.0
+offset_right = 629.0
+offset_bottom = 533.0
+
+[node name="CardView2" parent="CardsContainer" unique_id=845750072 instance=ExtResource("2_r7p4q")]
+visible = false
+offset_left = 846.0
+offset_top = 201.0
+offset_right = 1068.0
+offset_bottom = 571.0

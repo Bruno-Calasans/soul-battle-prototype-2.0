@@ -26,6 +26,15 @@ EFFECT_ENUM="*uid://c50d8ik0od5i0"
 STATUS_EFFECT_ENUM="*uid://dka1pr0ueu76i"
 ZONE_ENUM="*uid://je0br7xky4gx"
 CONSTANTS="*uid://c41ik3d2tag3v"
+GameManager="uid://dhrc2bw351a50"
+
+[global_group]
+
+Card=""
+
+[layer_names]
+
+2d_physics/layer_1="CARD"
 
 [physics]
 

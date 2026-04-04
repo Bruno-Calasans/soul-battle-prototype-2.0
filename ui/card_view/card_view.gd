@@ -1,6 +1,12 @@
 extends Control
 class_name CardView
 
+signal on_card_clicked(card: CardView)
+signal on_card_released(card: CardView)
+signal on_hovered(card: CardView)
+signal on_hovered_off(card: CardView)
+
+
 var card: Card
 @onready var background: TextureRect = $BackgroundPanel/BackgroundMargin/CardBackground
 @onready var card_name: RichTextLabel = $NameMargin/NamePanel/CardName
@@ -20,3 +26,35 @@ func _ready() -> void:
 	type.text = "ty"
 	subtype.text = "sub"
 	tags.text = "creature - zombie - common"
+
+	for child in get_children():
+		_set_children_ignore(child)
+
+	
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.is_pressed():
+			print("Card pressed")
+			on_card_clicked.emit(self)
+			
+		else:
+			print("Card released")
+			on_card_released.emit(self)
+
+
+func _on_mouse_entered() -> void:
+	print("mouse entered")
+	on_hovered.emit(self)
+
+
+func _on_mouse_exited() -> void:
+	print("mouse exited")
+	on_hovered_off.emit(self)
+	
+
+func _set_children_ignore(node):
+	if node is Control:
+		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	for c in node.get_children():
+		_set_children_ignore(c)

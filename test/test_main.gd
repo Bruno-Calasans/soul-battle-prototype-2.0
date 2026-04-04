@@ -9,5 +9,5 @@ func _ready() -> void:
 	#StatusEffectStatsTest.run()
 	#StatusEffectTriggerTest.run()
 	#StatusEffectRuleModifierTest.run()
-	AttackTest.run()
+	#AttackTest.run()
 	
