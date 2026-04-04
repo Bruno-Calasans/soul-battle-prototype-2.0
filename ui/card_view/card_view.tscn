@@ -405,7 +405,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="CardArea2D" type="Area2D" parent="." unique_id=300064474]
-visible = false
 
 [node name="CardColisionShape2D" type="CollisionShape2D" parent="CardArea2D" unique_id=1000630885]
 position = Vector2(111, 185)

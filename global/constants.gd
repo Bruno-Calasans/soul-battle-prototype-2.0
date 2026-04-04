@@ -13,10 +13,19 @@ const DMG_TYPE_NAMES: Dictionary = {
 	CARD_ENUM.DMG_TYPE.DARK: "DARK"
 }
 
+# size
+const NORMAL_CARD_SIZE = Vector2(220, 370)
+
+
+# scale
 const NORMAL_CARD_SCALE = Vector2(0.5, 0.5)
 const HIGHLIGHT_CARD_SCALE = Vector2(0.6, 0.6)
 const DRAGGED_CARD_SCALE = Vector2(0.8, 0.8)
+const SLOT_SCALE = NORMAL_CARD_SCALE * 1.05
 
+# z index
 const HIGHLIGHT_CARD_Z_INDEX = 2
 const DRAGGED_CARD_Z_INDEX = 100
 const NORMAL_CARD_Z_INDEX = 0
+const CARD_IN_SLOT_Z_INDEX = -1
+const SLOT_Z_INDEX = -2

@@ -31,10 +31,12 @@ GameManager="uid://dhrc2bw351a50"
 [global_group]
 
 Card=""
+Slot=""
 
 [layer_names]
 
 2d_physics/layer_1="CARD"
+2d_physics/layer_2="SLOT"
 
 [physics]
 

@@ -48,3 +48,20 @@ func get_card_on_top() -> CardView:
 			highest_z_index = card.z_index
 	
 	return top_card
+
+
+func detect_card_slots() -> Array[CardSlotView]:
+	var nodes: Array = detect_nodes_with_mouse()
+	var slots: Array[CardSlotView] = []
+	
+	for node in nodes:
+		var slot = node.get_parent()
+		if slot is CardSlotView: slots.append(slot)
+	
+	return slots
+	
+	
+func get_first_card_slot() -> CardSlotView:
+	var card_slots: Array[CardSlotView] = detect_card_slots()
+	if card_slots.size() == 0: return null
+	return card_slots[0]

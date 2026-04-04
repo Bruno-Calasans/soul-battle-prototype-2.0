@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cykqomsqf4tyy"]
+
+[ext_resource type="Script" uid="uid://d3ga5oknt4dhx" path="res://ui/slot_view/slot_view.gd" id="1_to3d1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_to3d1"]
+bg_color = Color(0.24705882, 0.24705882, 0.24705882, 0.99607843)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3882353, 0.3882353, 0.3882353, 0.9490196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to3d1"]
+size = Vector2(220, 372)
+
+[node name="CardSlotView" type="Control" unique_id=1981590999]
+z_index = -1
+custom_minimum_size = Vector2(220, 370)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -185.0
+offset_right = 110.0
+offset_bottom = 185.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("1_to3d1")
+
+[node name="CardSlotPanel" type="Panel" parent="." unique_id=1386937306]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_to3d1")
+
+[node name="CardSlotArea2D" type="Area2D" parent="." unique_id=993367140]
+collision_layer = 2
+
+[node name="CardSlotCollisionShape2D" type="CollisionShape2D" parent="CardSlotArea2D" unique_id=1270487877]
+position = Vector2(110, 185)
+shape = SubResource("RectangleShape2D_to3d1")

@@ -9,6 +9,7 @@ func highlight(card: CardView):
 		card.scale = CONSTANTS.HIGHLIGHT_CARD_SCALE
 		card.z_index = CONSTANTS.HIGHLIGHT_CARD_Z_INDEX
 		hightlight_card = card
+		print("apply highlight")
 		
 	
 func remove_highlight(card_view: CardView):
@@ -16,4 +17,6 @@ func remove_highlight(card_view: CardView):
 		card_view.scale = CONSTANTS.NORMAL_CARD_SCALE
 		card_view.z_index = CONSTANTS.NORMAL_CARD_Z_INDEX
 		hightlight_card = null
+		print("remove highlight")
+		
 		
