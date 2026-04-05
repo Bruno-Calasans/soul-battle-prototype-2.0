@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b4u4afucohch6"]
+
+[ext_resource type="Script" uid="uid://c7fgsuo0rqyvs" path="res://view/hand_view/hand_view.gd" id="1_sgdaf"]
+
+[node name="HandView" type="Control" unique_id=1661699429]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_sgdaf")

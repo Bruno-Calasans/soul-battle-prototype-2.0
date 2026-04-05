@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	update_card_position_with_mouse()
 	
-	
+
 func update_card_position_with_mouse():
 	if not dragged_card: return
 
@@ -43,24 +43,31 @@ func start_drag(card_view: CardView):
 	dragged_card.z_index = CONSTANTS.DRAGGED_CARD_Z_INDEX
 	
 	
+	
 func end_drag():
 	if dragged_card == null: return
 	
 	var previous_dragged_card: CardView = dragged_card
+	hightlight_manager.remove_highlight(previous_dragged_card)
 	dragged_card = null
 	can_drag = true
 	
-	# verifica se tem card depois de soltar
+	
 	var card_after_drop = entity_detector.get_card_on_top()
-	if card_after_drop: hightlight_manager.highlight(card_after_drop)
-		
 	var slot_found = entity_detector.get_first_card_slot()
+	
+	# drop card em cima de outro card que não tem slot embaixo
+	if card_after_drop and not slot_found: hightlight_manager.highlight(card_after_drop)
+	
+	# drop card em cima do slot
 	if slot_found: slot_found.place_card(previous_dragged_card)
 
+	# drop em nenhum lugar
 	if not card_after_drop and not slot_found:
 		previous_dragged_card.scale = CONSTANTS.NORMAL_CARD_SCALE
 		previous_dragged_card.z_index = CONSTANTS.NORMAL_CARD_Z_INDEX
 		
+	
 	
 func on_card_clicked(card_view: CardView):
 	#start_drag(card)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dbf7iefhk24np"]
 
 [ext_resource type="Theme" uid="uid://bl2gh7y8im17c" path="res://ui/themes/card_theme.tres" id="1_vwh3y"]
-[ext_resource type="Script" uid="uid://dt53paqxcejdc" path="res://ui/card_view/card_view.gd" id="2_fx0ar"]
+[ext_resource type="Script" uid="uid://dt53paqxcejdc" path="res://view/card_view/card_view.gd" id="2_fx0ar"]
 [ext_resource type="Shader" uid="uid://3vp3ellerq51" path="res://ui/shaders/round_texture.gdshader" id="3_5vvts"]
 [ext_resource type="Texture2D" uid="uid://5oxby23fgnup" path="res://assets/card/common-card.jpeg" id="4_w0tj2"]
 [ext_resource type="Texture2D" uid="uid://bh72pmk1icx06" path="res://assets/icons/rock.svg" id="5_cw2ka"]
@@ -69,6 +69,7 @@ corner_detail = 10
 size = Vector2(222, 370)
 
 [node name="CardView" type="Control" unique_id=1899333581 groups=["Card"]]
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

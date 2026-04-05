@@ -8,6 +8,7 @@ signal on_hovered_off(card: CardView)
 
 # data
 var card: Card
+var slot: CardSlotView
 
 # textures
 @onready var background: TextureRect = $BackgroundPanel/BackgroundMargin/CardBackground

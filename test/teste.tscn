@@ -6,9 +6,11 @@
 [ext_resource type="Script" uid="uid://dhrc2bw351a50" path="res://ui/systems/game_manager.gd" id="2_rcspk"]
 [ext_resource type="Script" uid="uid://dgwyclv0ab67w" path="res://ui/systems/highlight_manager.gd" id="5_8sksj"]
 [ext_resource type="Script" uid="uid://c6hubpyoig82p" path="res://ui/systems/entity_detector.gd" id="6_7eq76"]
-[ext_resource type="PackedScene" uid="uid://cykqomsqf4tyy" path="res://ui/slot_view/slot_view.tscn" id="8_ok87e"]
+[ext_resource type="Script" uid="uid://b05m3marnr1on" path="res://test/slots.gd" id="7_qb0q1"]
+[ext_resource type="PackedScene" uid="uid://cykqomsqf4tyy" path="res://view/slot_view/slot_view.tscn" id="8_ok87e"]
+[ext_resource type="PackedScene" uid="uid://b4u4afucohch6" path="res://view/hand_view/hand_view.tscn" id="8_qb0q1"]
 
-[node name="Teste" type="Node2D" unique_id=1595170362]
+[node name="Field" type="Node2D" unique_id=1595170362]
 script = ExtResource("1_bysfv")
 
 [node name="GameManager" type="Node2D" parent="." unique_id=1125694395]
@@ -28,16 +30,49 @@ script = ExtResource("6_7eq76")
 
 [node name="CardsContainer" type="Node2D" parent="." unique_id=508755458]
 
-[node name="Slots" type="Node2D" parent="." unique_id=1246154987]
+[node name="SlotContainer" type="HFlowContainer" parent="." unique_id=799765127]
+offset_left = 309.0
+offset_top = 326.0
+offset_right = 1563.9999
+offset_bottom = 696.0
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+theme_override_constants/h_separation = 20
+alignment = 1
+last_wrap_alignment = 2
+script = ExtResource("7_qb0q1")
 
-[node name="SlotView" parent="Slots" unique_id=1981590999 instance=ExtResource("8_ok87e")]
-offset_left = 480.0
-offset_top = 324.0
-offset_right = 700.0
-offset_bottom = 694.0
+[node name="SlotView" parent="SlotContainer" unique_id=1981590999 instance=ExtResource("8_ok87e")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="SlotView2" parent="Slots" unique_id=1956118952 instance=ExtResource("8_ok87e")]
-offset_left = 666.0
-offset_top = 323.0
-offset_right = 886.0
-offset_bottom = 693.0
+[node name="SlotView2" parent="SlotContainer" unique_id=1919172036 instance=ExtResource("8_ok87e")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="SlotView3" parent="SlotContainer" unique_id=38023265 instance=ExtResource("8_ok87e")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="SlotView4" parent="SlotContainer" unique_id=1101856313 instance=ExtResource("8_ok87e")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="SlotView5" parent="SlotContainer" unique_id=795895507 instance=ExtResource("8_ok87e")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HandView" parent="." unique_id=1661699429 instance=ExtResource("8_qb0q1")]
+custom_minimum_size = Vector2(100, 200)
+offset_left = 218.0
+offset_top = 441.0
+offset_right = 939.0
+offset_bottom = 641.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 8

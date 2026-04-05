@@ -20,7 +20,7 @@ func connect_card_signals(card_view: CardView):
 	
 
 func spawn_cards(amount: int = 2):
-	var card_scene: PackedScene = preload("res://ui/card_view/card_view.tscn")
+	var card_scene: PackedScene = preload("res://view/card_view/card_view.tscn")
 	
 	for index in range(amount):
 		var card_view = card_scene.instantiate()
