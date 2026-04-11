@@ -5,7 +5,7 @@
 [node name="HandView" type="HBoxContainer" unique_id=1783048609]
 offset_right = 220.0
 offset_bottom = 370.0
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.4, 0.4)
 mouse_filter = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 20
 script = ExtResource("1_sgdaf")

@@ -10,7 +10,6 @@ func _input(event: InputEvent) -> void:
 		
 		if event.is_pressed(): 
 			var card: CardView = entity_detector.get_card_on_top()
-			print(card)
 			if card is CardView: 
 				drag_manager.start_drag(card)
 			

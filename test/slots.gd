@@ -3,4 +3,4 @@ class_name SlotContainer
 
 
 func _ready() -> void:
-	scale = CONSTANTS.NORMAL_CARD_SCALE
+	scale = CONSTANTS.SLOT_CONTAINER_SCALE

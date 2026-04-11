@@ -70,6 +70,7 @@ size = Vector2(222, 370)
 
 [node name="CardView" type="Control" unique_id=1899333581 groups=["Card"]]
 z_as_relative = false
+custom_minimum_size = Vector2(220, 370)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -82,10 +83,9 @@ offset_right = 111.0
 offset_bottom = 185.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
 pivot_offset_ratio = Vector2(0.5, 0.5)
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 6
+size_flags_vertical = 6
 theme = ExtResource("1_vwh3y")
 theme_type_variation = &"Label"
 script = ExtResource("2_fx0ar")

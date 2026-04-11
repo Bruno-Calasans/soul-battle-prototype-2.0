@@ -3,13 +3,34 @@ class_name HandView
 
 const NORMAL_CARD_SIZE = CONSTANTS.NORMAL_CARD_SIZE
 const CARD_WIDTH = NORMAL_CARD_SIZE.x
-const HAND_Y_POSITION = 650 #
+const HAND_Y_POSITION = 10 #
 const ANIMATION_FROM_HAND_SPEED = 0.4
 const ANIMATION_TO_HAND_SPEED = 0.4
 
 var cards: Array[CardView] = []
 var center_screen_x: float
-var invert_add_card_to_hand: bool = false
+var invert_add_card_to_hand: bool = true
+
+@onready var highlight_manager: HighlightManager = $"../GameManager/HighlightManager"
+
+
+func _ready() -> void:
+	scale = CONSTANTS.HAND_CONTAINER_SCALE
+	spawn_cards(4)
+
+
+func spawn_cards(amount: int = 2):
+	var card_scene: PackedScene = preload("res://view/card_view/card_view.tscn")
+	
+	for index in range(amount):
+		var card_view = card_scene.instantiate()
+		connect_card_signals(card_view)
+		add_card(card_view)
+
+
+func connect_card_signals(card_view: CardView):
+	card_view.on_hovered.connect(highlight_manager.highlight)
+	card_view.on_hovered_off.connect(highlight_manager.remove_highlight)
 
 
 func config():
@@ -22,16 +43,19 @@ func has_card(card: Card):
 
 
 func add_card(card: CardView):
-	# new card to hand
+	# new card in the hand
 	if card not in cards:
+		
 		#  insert at the end
 		if invert_add_card_to_hand:
 			cards.append(card)
 		# insert at the start
 		else:
 			cards.insert(0, card)
+			
 		update_hand_position()
 		add_child(card)
+		
 	# returning card to hand
 	else:
 		animate_card_to_position(card, card.position_in_hand)

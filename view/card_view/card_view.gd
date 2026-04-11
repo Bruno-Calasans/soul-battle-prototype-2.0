@@ -9,6 +9,7 @@ signal on_hovered_off(card: CardView)
 # data
 var card: Card
 var slot: CardSlotView
+var position_in_hand: Vector2
 
 # textures
 @onready var background: TextureRect = $BackgroundPanel/BackgroundMargin/CardBackground
@@ -45,6 +46,7 @@ func _gui_input(event: InputEvent) -> void:
 			
 		else:
 			on_card_released.emit(self)
+
 
 func disable_collision():
 	card_collision.disabled = true

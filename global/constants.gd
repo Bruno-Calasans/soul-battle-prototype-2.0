@@ -16,13 +16,15 @@ const DMG_TYPE_NAMES: Dictionary = {
 # size
 const NORMAL_CARD_SIZE = Vector2(220, 370)
 
-
 # scale
-const NORMAL_CARD_SCALE = Vector2(0.4, 0.4)
-const HIGHLIGHT_CARD_SCALE = Vector2(0.5, 0.5)
-const DRAGGED_CARD_SCALE = Vector2(0.6, 0.6)
-const SLOT_SCALE = NORMAL_CARD_SCALE * 1.05
+const NORMAL_CARD_SCALE = Vector2(1, 1)
+const HIGHLIGHT_CARD_SCALE = Vector2(1.1, 1.1)
+const DRAGGED_CARD_SCALE = Vector2(0.5, 0.5)
+const SLOT_CONTAINER_SCALE = Vector2(0.4, 0.4)
+const SLOT_SCALE = Vector2(1, 1)
 const CARD_IN_SLOT_SCALE = Vector2(1, 1)
+const HAND_CONTAINER_SCALE = Vector2(0.3, 0.3)
+const CARD_IN_HAND_SCALE = Vector2(1, 1)
 
 # z index
 const HIGHLIGHT_CARD_Z_INDEX = 2

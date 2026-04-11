@@ -8,9 +8,7 @@ class_name GameManager
 @onready var cards_container = $"../CardsContainer"
 
 func _ready() -> void:
-	if drag_manager and drag_manager.ready and highlight_manager and highlight_manager.ready:
-		spawn_cards()
-
+	pass
 
 func connect_card_signals(card_view: CardView):
 	card_view.on_card_clicked.connect(drag_manager.on_card_clicked)
